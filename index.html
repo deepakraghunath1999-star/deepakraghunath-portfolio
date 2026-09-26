@@ -1,1567 +1,1626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Deepak Raghunath | Financial Analytics Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deepak Raghunath — Finance, Analytics &amp; AI</title>
+<meta name="description" content="Deepak Raghunath — financial analyst with 4.5+ years at Ameriprise Financial and Accenture. P&amp;L reporting, forecasting, controls, SQL, Python, Power BI and AI-assisted workflows. M.S. Business Analytics (FinTech), WashU Olin, Dec 2026." />
+<meta name="author" content="Deepak Raghunath" />
+<link rel="canonical" href="https://deepakraghunath.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://deepakraghunath.com/" />
+<meta property="og:title" content="Deepak Raghunath — Finance, Analytics &amp; AI" />
+<meta property="og:description" content="Financial analyst turning financial data into decisions. Case studies, impact, and live financial models you can run in the browser." />
+<meta property="og:image" content="https://deepakraghunath.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#F3F0E8" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0F1012" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121417'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23F3F0E8' text-anchor='middle'%3EDR%3C/text%3E%3Crect x='14' y='49' width='36' height='3' fill='%23E0561B'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Deepak Raghunath","url":"https://deepakraghunath.com/","jobTitle":"Financial Analyst","email":"mailto:deepakraghunath1999@gmail.com","address":{"@type":"PostalAddress","addressLocality":"St. Louis","addressRegion":"MO","addressCountry":"US"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Washington University in St. Louis — Olin Business School"},{"@type":"CollegeOrUniversity","name":"University of Mumbai — Jai Hind College"}],"sameAs":["https://www.linkedin.com/in/deepak-raghunath"],"knowsAbout":["FP&A","Financial modeling","Variance analysis","SQL","Python","Power BI","Monte Carlo simulation","Large language models"]}
+</script>
+<script>
+  /* Apply saved theme before paint; storage may be unavailable. */
+  (function(){try{var t=localStorage.getItem('dr-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+  document.documentElement.classList.add('js');})();
+</script>
 <style>
-  :root {
-    --bg: #010308;
-    --surface: rgba(14, 23, 36, 0.6);
-    --surface-solid: #0f1c2d;
-    --surface-2: rgba(19, 31, 48, 0.8);
-    --border: rgba(165, 196, 230, 0.2);
-    --border-strong: rgba(165, 196, 230, 0.34);
-    --text: #f4f8ff;
-    --text-muted: #afc2dc;
-    --text-faint: #7f94b1;
-    --green: #3dd68c;
-    --red: #f05a5a;
-    --blue: #4a9eff;
-    --accent: #8ec5ff;
-    --accent-2: #9af7d3;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(1200px 500px at 5% -10%, rgba(74, 158, 255, 0.16), transparent 65%),
-      radial-gradient(900px 500px at 90% 0%, rgba(84, 255, 212, 0.1), transparent 60%),
-      radial-gradient(800px 600px at 50% 110%, rgba(168, 122, 255, 0.07), transparent 65%);
-    pointer-events: none;
-    z-index: -2;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='rgba(174,205,255,0.10)' stroke-width='1'%3E%3Cpath d='M0 110h220M110 0v220'/%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #8ec5ff, #9af7d3);
-    box-shadow: 0 0 15px rgba(142, 197, 255, 0.8);
-    z-index: 150;
-    transition: width 0.08s linear;
-  }
-
-  nav {
-    position: fixed;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1120px, calc(100% - 2rem));
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.9rem 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: rgba(4, 9, 15, 0.82);
-    backdrop-filter: blur(18px) saturate(140%);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  }
-
-  .nav-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.92rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--text);
-    padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    background: linear-gradient(120deg, rgba(142, 197, 255, 0.2), rgba(154, 247, 211, 0.16));
-    border: 1px solid rgba(142, 197, 255, 0.35);
-  }
-
-  .nav-links { display: flex; align-items: center; gap: 1.7rem; }
-
-  .nav-links a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    color: var(--text-muted);
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .nav-links a:hover { color: #fff; }
-
-  .nav-cta {
-    color: #06131f;
-    background: linear-gradient(130deg, #8ec5ff, #9af7d3);
-    border: none;
-    border-radius: 999px;
-    padding: 0.5rem 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-  }
-
-  section {
-    width: min(1120px, calc(100% - 2rem));
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero {
-    padding: 8.3rem 0 4.2rem;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1.25fr 0.95fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .hero-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(0.5px);
-    pointer-events: none;
-    opacity: 0.55;
-  }
-
-  .hero-orb.one {
-    width: 150px;
-    height: 150px;
-    top: 10%;
-    left: -35px;
-    background: radial-gradient(circle, rgba(142, 197, 255, 0.5), rgba(142, 197, 255, 0));
-    animation: drift 11s ease-in-out infinite;
-  }
-
-  .hero-orb.two {
-    width: 190px;
-    height: 190px;
-    bottom: 8%;
-    right: -48px;
-    background: radial-gradient(circle, rgba(154, 247, 211, 0.5), rgba(154, 247, 211, 0));
-    animation: drift 14s ease-in-out infinite reverse;
-  }
-
-  .hero-content {
-    padding: clamp(1.2rem, 2vw, 2rem);
-    border-radius: 30px;
-    border: 1px solid var(--border);
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(8, 16, 26, 0.52));
-    backdrop-filter: blur(24px);
-    box-shadow: 0 24px 90px rgba(0, 0, 0, 0.35);
-  }
-
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
-    color: var(--accent-2);
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.4rem 0.85rem;
-    border: 1px solid rgba(154, 247, 211, 0.35);
-    border-radius: 999px;
-    background: rgba(154, 247, 211, 0.08);
-  }
-
-  h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(3.2rem, 7vw, 6rem);
-    line-height: 0.95;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    margin-bottom: 1rem;
-  }
-
-  h1 span {
-    color: transparent;
-    background: linear-gradient(120deg, #8ec5ff, #9af7d3 72%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-
-  .hero-title2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.05rem, 2vw, 1.34rem);
-    color: #d9e6f8;
-    margin-bottom: 1rem;
-  }
-
-  .hero-desc {
-    max-width: 58ch;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    font-size: 0.99rem;
-  }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-bottom: 1.6rem;
-  }
-
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.63rem;
-    color: #d4e4f9;
-    letter-spacing: 0.08em;
-    padding: 0.35rem 0.72rem;
-    border-radius: 999px;
-    border: 1px solid rgba(142, 197, 255, 0.28);
-    background: rgba(142, 197, 255, 0.12);
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
-  }
-
-  .hero-stats > div {
-    padding: 1rem 0.8rem;
-    border-radius: 16px;
-    background: rgba(8, 14, 24, 0.58);
-    border: 1px solid var(--border);
-  }
-
-  .stat-num {
-    display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.65rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #eaf3ff;
-  }
-
-  .stat-label {
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.58rem;
-    color: var(--text-faint);
-  }
-
-  .hero-panel {
-    border-radius: 28px;
-    border: 1px solid var(--border-strong);
-    background: linear-gradient(165deg, rgba(9, 16, 25, 0.94), rgba(7, 13, 20, 0.78));
-    backdrop-filter: blur(20px);
-    padding: 2rem;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-panel::after {
-    content: '';
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    top: -100px;
-    right: -70px;
-    background: radial-gradient(circle, rgba(142, 197, 255, 0.28), transparent 65%);
-  }
-
-  .panel-title {
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.62rem;
-    color: var(--text-faint);
-    margin-bottom: 1.2rem;
-  }
-
-  .signal-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.8rem;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid rgba(165, 196, 230, 0.14);
-  }
-
-  .signal-item:last-of-type { border-bottom: none; }
-
-  .signal-label { color: var(--text-muted); font-size: 0.92rem; }
-  .signal-value {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.06rem;
-    font-weight: 600;
-    color: #f3f8ff;
-  }
-
-  .signal-value.good { color: var(--green); }
-
-  .scroll-indicator {
-    position: absolute;
-    left: 0;
-    bottom: 0.7rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--text-faint);
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    animation: float 2.2s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
-  @keyframes drift {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-16px) scale(1.08); }
-  }
-
-  .prompt-chip {
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    color: #d4e2f6;
-    padding: 0.85rem 0.95rem;
-    border-radius: 14px;
-    border: 1px dashed rgba(142, 197, 255, 0.3);
-    background: rgba(142, 197, 255, 0.08);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.1rem;
-  }
-
-  .section-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--accent-2);
-    letter-spacing: 0.11em;
-  }
-
-  h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.85rem);
-    letter-spacing: -0.03em;
-    font-weight: 600;
-    color: #f3f8ff;
-  }
-
-  .section-line {
-    height: 1px;
-    flex: 1;
-    background: linear-gradient(to right, rgba(142, 197, 255, 0.32), transparent);
-  }
-
-  #projects { padding: 4.4rem 0 2.8rem; }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  .project-card {
-    position: relative;
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background: linear-gradient(160deg, rgba(12, 20, 31, 0.78), rgba(12, 20, 31, 0.38));
-    backdrop-filter: blur(10px);
-    padding: 1.6rem;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    overflow: hidden;
-  }
-
-  .project-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(142, 197, 255, 0.55);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
-  }
-
-  .project-card.featured { grid-column: span 2; }
-
-  .card-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--text-faint);
-    letter-spacing: 0.12em;
-    margin-bottom: 0.9rem;
-  }
-
-  .card-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.9rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #0f2337;
-    background: linear-gradient(120deg, #8ec5ff, #9af7d3);
-  }
-
-  h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.28rem;
-    line-height: 1.2;
-    margin-bottom: 0.55rem;
-    font-weight: 600;
-    color: #f8fbff;
-  }
-
-  .card-subtitle {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #98b8dc;
-    margin-bottom: 0.85rem;
-  }
-
-  .card-desc {
-    color: var(--text-muted);
-    font-size: 0.86rem;
-    margin-bottom: 1rem;
-  }
-
-  .card-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
-
-  .tech-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.58rem;
-    color: #cce4ff;
-    padding: 0.22rem 0.52rem;
-    border-radius: 999px;
-    border: 1px solid rgba(142, 197, 255, 0.3);
-    background: rgba(142, 197, 255, 0.1);
-    letter-spacing: 0.08em;
-  }
-
-  .btn-run {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 999px;
-    border: 1px solid rgba(154, 247, 211, 0.45);
-    background: rgba(154, 247, 211, 0.12);
-    color: #d8fff0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    padding: 0.55rem 0.95rem;
-    cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-
-  .btn-run:hover { transform: translateY(-1px); background: rgba(154, 247, 211, 0.18); }
-
-  .btn-run .arrow { transition: transform 0.2s ease; }
-  .btn-run:hover .arrow { transform: translateX(4px); }
-
-  #about { padding: 3rem 0 3rem; }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 1rem;
-    align-items: start;
-  }
-
-  .about-text {
-    padding: 1.65rem;
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background: linear-gradient(165deg, rgba(13, 23, 34, 0.8), rgba(13, 23, 34, 0.4));
-  }
-
-  .about-text p {
-    color: var(--text-muted);
-    font-size: 0.97rem;
-    margin-bottom: 1rem;
-  }
-
-  .about-highlights {
-    display: grid;
-    gap: 0.8rem;
-  }
-
-  .highlight-item {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 0.9rem;
-    align-items: start;
-    padding: 1rem;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: linear-gradient(165deg, rgba(13, 23, 34, 0.72), rgba(13, 23, 34, 0.36));
-  }
-
-  .highlight-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(120deg, rgba(142, 197, 255, 0.22), rgba(154, 247, 211, 0.18));
-    border: 1px solid rgba(142, 197, 255, 0.32);
-    color: #d8ecff;
-    font-weight: 700;
-  }
-
-  .highlight-text {
-    color: var(--text-muted);
-    font-size: 0.84rem;
-    line-height: 1.45;
-  }
-
-  .highlight-text strong {
-    display: block;
-    color: #edf4ff;
-    margin-bottom: 0.2rem;
-    font-size: 0.9rem;
-  }
-
-  #ai-work { padding: 0.6rem 0 3rem; }
-
-  .ai-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-    gap: 0.85rem;
-  }
-
-  .ai-card {
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: linear-gradient(160deg, rgba(14, 23, 36, 0.78), rgba(12, 20, 31, 0.34));
-    padding: 1rem;
-  }
-
-  .ai-role {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-2);
-    margin-bottom: 0.4rem;
-  }
-
-  .ai-card h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.04rem;
-    color: #eaf4ff;
-    margin-bottom: 0.45rem;
-  }
-
-  .ai-card p {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-  }
-
-  .contact-strip {
-    width: min(1120px, calc(100% - 2rem));
-    margin: 0 auto 1rem;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: rgba(10, 16, 24, 0.72);
-    padding: 1rem;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.6rem;
-  }
-
-  .contact-pill {
-    border: 1px solid rgba(142, 197, 255, 0.25);
-    border-radius: 12px;
-    padding: 0.65rem 0.75rem;
-    background: rgba(142, 197, 255, 0.08);
-  }
-
-  .contact-label {
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    font-size: 0.56rem;
-    color: var(--text-faint);
-    margin-bottom: 0.25rem;
-  }
-
-  .contact-pill a, .contact-pill span {
-    color: #eaf3ff;
-    font-size: 0.8rem;
-    text-decoration: none;
-    word-break: break-word;
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.75s ease, transform 0.75s ease;
-    will-change: opacity, transform;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  footer {
-    width: min(1120px, calc(100% - 2rem));
-    margin: 0 auto 2.4rem;
-    padding: 1.35rem;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: rgba(10, 16, 24, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .footer-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #e9f3ff;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.07em;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-  }
-
-  .footer-links a:hover { color: #fff; }
-
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(3, 7, 12, 0.76);
-    backdrop-filter: blur(16px);
-    z-index: 200;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem;
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: linear-gradient(160deg, rgba(12, 22, 34, 0.96), rgba(8, 16, 26, 0.96));
-    border: 1px solid var(--border-strong);
-    max-width: 900px;
-    width: 100%;
-    max-height: 92vh;
-    overflow-y: auto;
-    position: relative;
-    border-radius: 20px;
-  }
-
-  .modal-header {
-    padding: 1.5rem 1.6rem 1.1rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: sticky;
-    top: 0;
-    background: rgba(9, 17, 26, 0.96);
-    z-index: 10;
-  }
-
-  .modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: #f6fbff; }
-  .modal-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: #93b7de; letter-spacing: 0.08em; margin-top: 0.25rem; }
-
-  .modal-close {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    cursor: pointer;
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.02rem;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-
-  .modal-close:hover { border-color: var(--red); color: var(--red); }
-  .modal-body { padding: 1.6rem; }
-
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.85rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-group label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.61rem;
-    color: var(--text-faint);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.45rem;
-  }
-
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    background: rgba(4, 10, 16, 0.78);
-    border: 1px solid var(--border);
-    color: #e6f0ff;
-    padding: 0.65rem 0.8rem;
-    border-radius: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #8ec5ff; }
-  .form-group select option { background: var(--surface-solid); }
-
-  .run-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: linear-gradient(130deg, #8ec5ff, #9af7d3);
-    color: #071521;
-    border: none;
-    border-radius: 999px;
-    padding: 0.7rem 1.2rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform 0.2s;
-    margin-bottom: 1.2rem;
-  }
-
-  .run-btn:hover { transform: translateY(-1px); }
-
-  .results-panel {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.2rem;
-    background: rgba(5, 10, 16, 0.74);
-    display: none;
-  }
-
-  .results-panel.visible { display: block; }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.7rem;
-    margin-bottom: 1rem;
-  }
-
-  .result-card {
-    background: rgba(10, 18, 28, 0.8);
-    border: 1px solid rgba(165, 196, 230, 0.2);
-    border-radius: 12px;
-    padding: 0.85rem;
-  }
-
-  .result-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.56rem;
-    color: var(--text-faint);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-  }
-
-  .result-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; color: #dcecff; font-weight: 600; }
-  .result-value.green { color: var(--green); }
-  .result-value.red { color: var(--red); }
-  .result-value.blue { color: var(--blue); }
-
-  .chart-container { position: relative; height: 280px; margin-top: 0.9rem; }
-
-  .explanation {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-    padding: 0.95rem;
-    border-left: 2px solid #8ec5ff;
-    background: rgba(142, 197, 255, 0.08);
-    border-radius: 8px;
-    margin-top: 1rem;
-  }
-
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    margin-top: 1rem;
-  }
-
-  .data-table th {
-    padding: 0.6rem 0.75rem;
-    text-align: left;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .data-table td {
-    padding: 0.6rem 0.75rem;
-    border-bottom: 1px solid rgba(165, 196, 230, 0.14);
-    color: var(--text);
-  }
-
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.36rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 999px;
-    letter-spacing: 0.08em;
-  }
-
-  .status-badge.ok {
-    background: rgba(61, 214, 140, 0.14);
-    border: 1px solid rgba(61, 214, 140, 0.34);
-    color: var(--green);
-  }
-
-  .status-badge.warn {
-    background: rgba(240, 90, 90, 0.12);
-    border: 1px solid rgba(240, 90, 90, 0.3);
-    color: var(--red);
-  }
-
-  .status-badge::before { content: '●'; font-size: 0.48rem; }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: fadeUp 0.8s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .fade-in:nth-child(1){animation-delay:0.04s}
-  .fade-in:nth-child(2){animation-delay:0.14s}
-  .fade-in:nth-child(3){animation-delay:0.24s}
-  .fade-in:nth-child(4){animation-delay:0.34s}
-  .fade-in:nth-child(5){animation-delay:0.44s}
-
-  @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding-top: 7.3rem; }
-    .project-card.featured { grid-column: span 1; }
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .scroll-indicator { display: none; }
-  }
-
-  @media (max-width: 768px) {
-    nav {
-      top: 0.7rem;
-      width: calc(100% - 1rem);
-      border-radius: 16px;
-      padding: 0.75rem 0.85rem;
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .nav-links { gap: 0.8rem; flex-wrap: wrap; }
-    .nav-cta { display: none; }
-    .hero { min-height: auto; }
-    .hero-content, .hero-panel { border-radius: 20px; }
-    .hero-stats { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .form-grid { grid-template-columns: 1fr; }
-    .modal-body { padding: 1.2rem; }
-    footer { border-radius: 14px; }
-  }
+:root{
+  --paper:#F3F0E8; --paper-2:#EBE7DC; --paper-3:#E2DDD0; --card:#F8F6F1;
+  --ink:#121417; --ink-2:#34383E; --muted:#676B71; --faint:#8B8E92;
+  --rule:rgba(18,20,23,.13); --rule-strong:rgba(18,20,23,.28);
+  --accent:#C2410C; --accent-strong:#9A3412; --accent-soft:rgba(194,65,12,.10);
+  --pos:#1D7348; --warn:#A16207; --neg:#B42318;
+  --band-outer:rgba(194,65,12,.12); --band-inner:rgba(194,65,12,.24); --path:rgba(18,20,23,.10);
+  --shadow:0 1px 0 rgba(18,20,23,.04), 0 18px 40px -24px rgba(18,20,23,.28);
+  --serif:'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --sans:'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --wrap:1240px; --gutter:clamp(16px,4vw,40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1012; --paper-2:#16181B; --paper-3:#1E2024; --card:#131518;
+    --ink:#EEEBE3; --ink-2:#CFCBC2; --muted:#9A968E; --faint:#77746E;
+    --rule:rgba(238,235,227,.12); --rule-strong:rgba(238,235,227,.26);
+    --accent:#F0703A; --accent-strong:#F58A5B; --accent-soft:rgba(240,112,58,.12);
+    --pos:#4CC38A; --warn:#E3B341; --neg:#F7736B;
+    --band-outer:rgba(240,112,58,.14); --band-inner:rgba(240,112,58,.28); --path:rgba(238,235,227,.10);
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 18px 40px -24px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1012; --paper-2:#16181B; --paper-3:#1E2024; --card:#131518;
+  --ink:#EEEBE3; --ink-2:#CFCBC2; --muted:#9A968E; --faint:#77746E;
+  --rule:rgba(238,235,227,.12); --rule-strong:rgba(238,235,227,.26);
+  --accent:#F0703A; --accent-strong:#F58A5B; --accent-soft:rgba(240,112,58,.12);
+  --pos:#4CC38A; --warn:#E3B341; --neg:#F7736B;
+  --band-outer:rgba(240,112,58,.14); --band-inner:rgba(240,112,58,.28); --path:rgba(238,235,227,.10);
+  --shadow:0 1px 0 rgba(0,0,0,.2), 0 18px 40px -24px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
+h1,h2,h3,h4,p,ul,ol,dl,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+::selection{background:var(--accent);color:var(--paper)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.num,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px}
+.skip:focus{left:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Type ---------- */
+.eyebrow{font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{color:var(--accent);font-weight:500}
+.display{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:.92}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1;letter-spacing:-.02em}
+.h2 em,.display em{font-style:italic;color:var(--accent)}
+.h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.08;letter-spacing:-.01em}
+.lede{font-size:clamp(1.08rem,1.5vw,1.28rem);line-height:1.55;color:var(--ink-2);max-width:58ch}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55em;min-height:46px;padding:.7em 1.15em;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font:500 .95rem/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),background .18s,color .18s,border-color .18s}
+.btn:hover{transform:translateY(-1px);background:var(--accent);border-color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule-strong)}
+.btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
+.btn svg{width:16px;height:16px}
+.link.nw{white-space:nowrap}
+.link{font:500 .92rem/1.3 var(--sans);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule-strong);padding-bottom:2px;transition:border-color .18s,color .18s}
+.link:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.scrolled{border-bottom-color:var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:500 .98rem/1 var(--sans);white-space:nowrap}
+.brand .mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:400 15px/1 var(--serif);position:relative}
+.brand .mark::after{content:"";position:absolute;left:7px;right:7px;bottom:5px;height:2px;background:var(--accent)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{font:500 .9rem/1 var(--sans);text-decoration:none;color:var(--muted);padding:10px 12px;border-radius:999px;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a[aria-current="true"]{color:var(--ink);background:var(--paper-2)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid var(--rule);background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:border-color .15s}
+.icon-btn:hover{border-color:var(--rule-strong)}
+.icon-btn svg{width:18px;height:18px}
+.nav .btn{min-height:40px;padding:.55em 1em;font-size:.9rem}
+.menu-btn{display:none}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:900px){
+  .nav-links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gutter) 16px;background:var(--paper);border-bottom:1px solid var(--rule);display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 4px;border-radius:0;border-bottom:1px solid var(--rule);font-size:1rem}
+  .nav-links a[aria-current="true"]{background:transparent;color:var(--accent)}
+  .menu-btn{display:grid}
+}
+@media (max-width:420px){.nav .btn .lbl-long{display:none}}
+@media (max-width:374px){.brand>span:last-child{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(40px,7vw,96px) 0 clamp(40px,6vw,72px);position:relative}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,32px)}
+.status{display:inline-flex;align-items:center;gap:10px;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding:8px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--card)}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--pos);box-shadow:0 0 0 4px color-mix(in srgb,var(--pos) 20%,transparent)}
+.hero h1{font-size:clamp(3.6rem,12.4vw,10.6rem);margin-left:-.04em}
+.hero h1 .l2{display:block;font-style:italic;color:var(--accent)}
+@media (min-width:1100px){.hero h1{font-size:min(8.9vw,8.6rem)}.hero h1 .l2{display:inline}}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);margin-top:clamp(28px,4vw,52px);align-items:start}
+.hero-copy .lede{margin-bottom:28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;padding-top:22px;border-top:1px solid var(--rule);font-size:.93rem}
+.facts dt{font:500 11px/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.facts dd{margin:0;color:var(--ink-2)}
+.fig{background:var(--card);border:1px solid var(--rule);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.fig-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--rule)}
+.live{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.fig-body{position:relative;padding:8px 8px 0}
+.fig-canvas{width:100%;height:clamp(260px,32vw,380px)}
+.fig-body noscript p{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.9rem;padding:24px;text-align:center}
+.fig-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule)}
+.fig-stats>div{padding:14px 20px;border-right:1px solid var(--rule)}
+.fig-stats>div:last-child{border-right:0}
+.fig-stats .v{font:500 1.45rem/1.1 var(--mono);letter-spacing:-.02em}
+.fig-stats .k{font:500 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.fig-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 20px 16px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.fig-stats>div{padding:12px 10px}.fig-stats .v{font-size:1.1rem}.fig-stats .k{font-size:9.5px;letter-spacing:.06em}.fig-head,.fig-foot{padding-left:14px;padding-right:14px}}
+
+/* ---------- Sections ---------- */
+.section{padding:clamp(72px,10vw,140px) 0;border-top:1px solid var(--rule)}
+.section-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);margin-bottom:clamp(40px,6vw,72px);align-items:end}
+.section-head .eyebrow{margin-bottom:18px}
+.section-head p{color:var(--ink-2);max-width:56ch}
+@media (max-width:860px){.section-head{grid-template-columns:1fr}}
+
+/* ---------- Ledger (impact) ---------- */
+.ledger{border-top:1px solid var(--ink)}
+.ledger-row{display:grid;grid-template-columns:minmax(0,3.2fr) minmax(0,5fr) minmax(0,2.4fr);gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule)}
+.ledger-row .fig-n{font-family:var(--serif);font-size:clamp(2.6rem,5.2vw,4.2rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:lining-nums}
+.ledger-row .fig-n small{font-size:.45em;color:var(--muted);margin-left:.1em;font-family:var(--sans);letter-spacing:0}
+.ledger-row h3{font:500 1.05rem/1.4 var(--sans);margin-bottom:4px}
+.ledger-row p{color:var(--muted);font-size:.95rem}
+.ledger-row .src{font:500 11px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right}
+.awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.award{padding:22px;border:1px solid var(--rule);border-radius:16px;background:var(--card)}
+.award .yr{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+.award h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;line-height:1.1;margin:12px 0 6px}
+.award p{color:var(--muted);font-size:.93rem}
+@media (max-width:760px){
+  .ledger-row{grid-template-columns:1fr;gap:6px}
+  .ledger-row .src{text-align:left}
+  .awards{grid-template-columns:1fr}
+}
+
+/* ---------- Case studies ---------- */
+.cases{display:grid;gap:clamp(20px,3vw,28px)}
+.case{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);border:1px solid var(--rule);border-radius:24px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}
+.case-main{padding:clamp(24px,3.4vw,44px)}
+.case-meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:22px}
+.case-idx{font:500 12px/1 var(--mono);color:var(--accent);letter-spacing:.1em}
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap}
+.chip.done::before,.chip.live-c::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pos)}
+.chip.live-c::before{background:var(--warn)}
+.case .org{font:500 .95rem/1.3 var(--sans);color:var(--muted)}
+.case h3{margin-bottom:20px;max-width:24ch}
+.case-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;margin-top:8px}
+.case-cols h4{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.case-cols p,.case-cols li{font-size:.97rem;color:var(--ink-2)}
+.case-cols li{position:relative;padding-left:16px;margin-bottom:7px}
+.case-cols li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.tools span{font:400 12px/1 var(--mono);padding:7px 10px;border-radius:8px;background:var(--paper-2);color:var(--ink-2)}
+.case-side{background:var(--paper-2);border-left:1px solid var(--rule);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:22px}
+.outcomes{display:grid;gap:0}
+.outcome{padding:14px 0;border-bottom:1px solid var(--rule)}
+.outcome:first-child{padding-top:0}
+.outcome .v{font-family:var(--serif);font-size:2.3rem;line-height:1;letter-spacing:-.02em}
+.outcome .k{font-size:.9rem;color:var(--muted);margin-top:4px}
+.flow{width:100%;height:auto;color:var(--ink)}
+.flow text{font-family:var(--mono);font-size:11px;fill:var(--ink-2)}
+.flow .box{fill:var(--card);stroke:var(--rule-strong)}
+.flow .hl{fill:var(--accent-soft);stroke:var(--accent)}
+.flow .ln{stroke:var(--rule-strong);fill:none;stroke-width:1.2}
+.flow .ln.a{stroke:var(--accent);stroke-dasharray:4 4}
+.case-side .flow{margin-top:auto}
+.case-side .note{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+@media (max-width:960px){.case{grid-template-columns:1fr}.case-side{border-left:0;border-top:1px solid var(--rule)}}
+@media (max-width:560px){.case-cols{grid-template-columns:1fr}}
+
+/* ---------- Now grid ---------- */
+.now{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tile{padding:26px;border:1px solid var(--rule);border-radius:20px;background:var(--card);display:flex;flex-direction:column;gap:12px}
+.tile .when{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile h3{font-family:var(--serif);font-weight:400;font-size:1.75rem;line-height:1.08}
+.tile .role{font:500 .92rem/1.3 var(--sans);color:var(--accent)}
+.tile p{color:var(--ink-2);font-size:.96rem}
+.tile .tools{margin-top:auto;padding-top:8px}
+@media (max-width:960px){.now{grid-template-columns:1fr}}
+
+/* ---------- Lab ---------- */
+.lab{background:var(--paper-2)}
+.lab-shell{border:1px solid var(--rule);border-radius:24px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;background:var(--paper)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:transparent;padding:12px 16px;border-radius:12px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:3px;min-width:170px;transition:background .15s}
+.tab .t{font:500 .95rem/1.2 var(--sans);color:var(--muted)}
+.tab .s{font:400 11px/1.3 var(--mono);color:var(--faint);letter-spacing:.02em}
+.tab:hover .t{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--card);box-shadow:0 0 0 1px var(--rule)}
+.tab[aria-selected="true"] .t{color:var(--ink)}
+.tab[aria-selected="true"] .s{color:var(--accent)}
+.panel{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);min-height:560px}
+.panel[hidden]{display:none}
+.controls{padding:clamp(20px,2.6vw,30px);border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:18px}
+.controls h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;line-height:1.05}
+.controls .intro{font-size:.94rem;color:var(--ink-2)}
+.ctl{display:grid;gap:8px}
+.ctl-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ctl label{font:500 .88rem/1.3 var(--sans);color:var(--ink-2)}
+.ctl output{font:500 .9rem/1 var(--mono);color:var(--ink)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(to right,var(--accent) var(--fill,50%),var(--rule-strong) var(--fill,50%))}
+input[type=range]::-moz-range-track{height:3px;border-radius:3px;background:var(--rule-strong)}
+input[type=range]::-moz-range-progress{height:3px;border-radius:3px;background:var(--accent)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--card);border:2px solid var(--accent);margin-top:-7.5px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
+.seg{display:inline-flex;padding:3px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);width:max-content;max-width:100%}
+.seg button{border:0;background:transparent;padding:8px 14px;border-radius:999px;font:500 .86rem/1 var(--sans);color:var(--muted);cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.select{font:500 .9rem/1 var(--sans);padding:10px 12px;border-radius:10px;border:1px solid var(--rule-strong);background:var(--paper);color:var(--ink);min-height:42px;width:100%}
+.assume{margin-top:auto;font-size:.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px;line-height:1.5}
+.output{padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.kpi{background:var(--card);padding:14px 16px;min-width:0}
+.kpi .k{font:500 10.5px/1.35 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.kpi .v{font:500 1.35rem/1.15 var(--mono);letter-spacing:-.02em;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .d{font-size:.8rem;color:var(--muted);margin-top:2px}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .warn{color:var(--warn)} .acc{color:var(--accent)}
+.chart{width:100%;height:340px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.84rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:18px;height:10px;border-radius:2px}
+.read{font-size:.95rem;color:var(--ink-2);padding:16px 18px;border-radius:14px;background:var(--paper);border:1px solid var(--rule)}
+.read strong{color:var(--ink);font-weight:600}
+details.data{font-size:.9rem}
+details.data summary{cursor:pointer;color:var(--muted);font:500 .85rem/1.4 var(--sans);list-style:none;display:inline-flex;gap:8px;align-items:center}
+details.data summary::before{content:"+";font-family:var(--mono);color:var(--accent)}
+details.data[open] summary::before{content:"−"}
+.tbl-wrap{overflow-x:auto;margin-top:12px;border:1px solid var(--rule);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font:500 10.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+td{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.84rem}
+tr:last-child td{border-bottom:0}
+.badge{display:inline-flex;align-items:center;gap:6px;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.b-ok{color:var(--pos);background:color-mix(in srgb,var(--pos) 12%,transparent)}
+.b-info{color:var(--muted);background:var(--paper-2)}
+.b-warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,transparent)}
+.b-bad{color:var(--neg);background:color-mix(in srgb,var(--neg) 12%,transparent)}
+.rmd-table td.note{font-family:var(--sans);font-size:.84rem;color:var(--muted);text-align:left;white-space:normal;min-width:170px}
+.rmd-table th,.rmd-table td{padding:10px 10px}
+#bs_d{font-size:1.05rem;line-height:1.45}
+.alloc{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.alloc div{display:flex;align-items:center;justify-content:center;font:500 11px/1 var(--mono);color:#fff;min-width:0;overflow:hidden;white-space:nowrap;transition:flex-basis .35s var(--ease)}
+@media (max-width:1000px){.panel{grid-template-columns:1fr;min-height:0}.controls{border-right:0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;align-content:start}.controls>h3,.controls>.intro,.controls>.assume,.controls>.ctl:has(.seg),.controls>.ctl.full{grid-column:1/-1}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:359px){.controls{grid-template-columns:1fr}}
+@media (max-width:520px){.chart{height:280px}.tab{min-width:150px}}
+
+/* ---------- Experience ---------- */
+.timeline{border-top:1px solid var(--ink)}
+.job{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,6fr) minmax(0,2fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--rule)}
+.job .dates{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.job h3{font:500 1.12rem/1.35 var(--sans)}
+.job .co{color:var(--accent)}
+.job p{color:var(--ink-2);font-size:.97rem;margin-top:6px;max-width:68ch}
+.job .loc{font-size:.9rem;color:var(--muted);text-align:right}
+.job .sub{margin-top:10px;display:grid;gap:6px}
+.job .sub li{font-size:.94rem;color:var(--ink-2);padding-left:16px;position:relative}
+.job .sub li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--accent)}
+.group-label{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:34px 0 12px}
+.group-label:first-child{padding-top:0}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:6px}.job .loc{text-align:left}}
+
+/* ---------- Builds ---------- */
+.builds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.build{padding:26px 26px 26px 0;border-bottom:1px solid var(--rule);display:grid;gap:8px}
+.build:nth-child(even){padding:26px 0 26px 26px;border-left:1px solid var(--rule)}
+.build .tag{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.build h3{font-family:var(--serif);font-weight:400;font-size:1.65rem;line-height:1.1}
+.build p{color:var(--ink-2);font-size:.96rem}
+@media (max-width:760px){.builds{grid-template-columns:1fr}.build,.build:nth-child(even){padding:22px 0;border-left:0}}
+
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,80px)}
+.about-copy p{font-size:1.08rem;color:var(--ink-2);margin-bottom:18px;max-width:58ch}
+.about-copy p:first-child{font-family:var(--serif);font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.2;color:var(--ink)}
+.stack{display:grid;gap:26px}
+.stack h3{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.edu{padding:18px 0;border-top:1px solid var(--rule)}
+.edu:last-child{border-bottom:1px solid var(--rule)}
+.edu h4{font:500 1.05rem/1.35 var(--sans)}
+.edu p{font-size:.93rem;color:var(--muted);margin-top:4px}
+.edu .d{font:500 12px/1 var(--mono);color:var(--muted);float:right;margin-left:12px}
+.skills{display:grid;gap:14px}
+.skills div{display:grid;grid-template-columns:130px 1fr;gap:12px;font-size:.95rem;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.skills dt{font:500 12px/1.6 var(--mono);color:var(--accent);letter-spacing:.04em}
+.skills dd{margin:0;color:var(--ink-2)}
+@media (max-width:900px){.about{grid-template-columns:1fr}}
+@media (max-width:480px){.skills div{grid-template-columns:1fr;gap:4px}.edu .d{float:none;display:block;margin:0 0 6px}}
+
+/* ---------- Contact ---------- */
+.contact{--cbg:#121417;--cfg:#EEEBE3;background:var(--cbg);color:var(--cfg);border-top:0}
+:root[data-theme="dark"] .contact{--cbg:#08090A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .contact{--cbg:#08090A}}
+.contact .eyebrow{color:color-mix(in srgb,var(--cfg) 60%,transparent)}
+.contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,7.6vw,6.6rem);line-height:.98;letter-spacing:-.02em;max-width:14ch;margin:18px 0 40px}
+.contact h2 em{color:#F0703A;font-style:italic}
+.contact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid color-mix(in srgb,var(--cfg) 22%,transparent)}
+.contact-grid a,.contact-grid button{display:flex;flex-direction:column;gap:8px;padding:22px 20px 22px 0;text-decoration:none;color:var(--cfg);background:none;border:0;text-align:left;cursor:pointer;border-bottom:1px solid color-mix(in srgb,var(--cfg) 22%,transparent);transition:color .15s;min-width:0}
+.contact-grid a:hover,.contact-grid button:hover{color:#F0703A}
+.contact-grid .k{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--cfg) 55%,transparent)}
+.contact-grid .v{font:500 1.02rem/1.35 var(--sans);overflow-wrap:anywhere}
+.contact :focus-visible{outline-color:#F0703A}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:44px;font-size:.85rem;color:color-mix(in srgb,var(--cfg) 55%,transparent)}
+.foot a{color:inherit}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.contact-grid{grid-template-columns:1fr}}
+
+
+/* ---------- Reveal (only when JS is running; content is visible without it) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .hero .rv{transition-duration:.9s}
+}
+@media print{
+  .nav,.lab,.toast,.cta-row,.fig{display:none!important}
+  body{background:#fff;color:#000}
+  .section{padding:24px 0}
+}
 </style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav>
-  <div class="nav-logo">DR · ANALYTICS</div>
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#ai-work">AI Work</a>
-    <a href="#contact">Contact</a>
-    <a href="https://www.linkedin.com/in/deepak-raghunath" target="_blank">LinkedIn ↗</a>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Deepak Raghunath — home"><span class="mark" aria-hidden="true">DR</span><span>Deepak Raghunath</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#impact">Impact</a>
+      <a href="#work">Work</a>
+      <a href="#lab">Lab</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      </button>
+      <a class="btn" href="Deepak_Raghunath_Resume.pdf" target="_blank" rel="noopener"><span>Résumé</span><span class="lbl-long">&nbsp;PDF</span></a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
   </div>
-  <a class="nav-cta" href="#projects">Run Live Models</a>
-</nav>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
 
-<section class="hero" id="home">
-  <div class="hero-orb one" data-parallax="0.1" aria-hidden="true"></div>
-  <div class="hero-orb two" data-parallax="0.16" aria-hidden="true"></div>
-  <div class="hero-content fade-in">
-    <div class="hero-eyebrow">Financial Analytics Portfolio</div>
-    <h1>Deepak <br/><span>Raghunath</span></h1>
-    <p class="hero-title2">Data Analyst · Financial Technology · M.S. WashU</p>
-    <p class="hero-desc">4.5+ years building decision systems for financial operations and investment analytics at Ameriprise Financial and Accenture. This portfolio turns that work into live models you can run instantly, from options pricing to compliance automation and NLP-driven earnings analysis.</p>
-    <div class="hero-tags">
-      <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI (DAX)</span><span class="tag">Advanced Excel</span><span class="tag">VBA Automation</span>
-      <span class="tag">Data Visualization</span><span class="tag">Exception Monitoring</span><span class="tag">Process Analytics</span><span class="tag">Web Scraping</span>
-      <span class="tag">n8n Workflows/Agents</span><span class="tag">Gemini API</span><span class="tag">Prompt Engineering</span><span class="tag">JavaScript</span><span class="tag">REST APIs</span>
-      <span class="tag">Gmail OAuth</span><span class="tag">RSS Feeds</span><span class="tag">Compensation Operations</span><span class="tag">Sales Ops Support</span>
-      <span class="tag">Project Management</span><span class="tag">SOP Documentation</span><span class="tag">Compliance & Audit Trails</span><span class="tag">Stakeholder Communication</span>
-      <span class="tag">Wealth Management Ops</span><span class="tag">FP&A</span><span class="tag">Portfolio Reviews</span><span class="tag">Financial Modeling</span><span class="tag">Risk Analysis</span>
-      <span class="tag">A/B Testing</span><span class="tag">Text Mining</span><span class="tag">NLP</span>
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero-top rv">
+      <p class="eyebrow">Portfolio — <b>Finance</b> · Analytics · AI</p>
+      <p class="status"><span class="dot" aria-hidden="true"></span>Open to full-time roles · Graduating Dec 2026</p>
     </div>
-    <div class="hero-stats">
-      <div><span class="stat-num">4.5+</span><span class="stat-label">Years work experience</span></div>
-      <div><span class="stat-num">1,400+</span><span class="stat-label">Hours saved annually</span></div>
-      <div><span class="stat-num">40%</span><span class="stat-label">Turnaround improvement</span></div>
-    </div>
-    <div class="scroll-indicator">Scroll for live demos</div>
-  </div>
+    <h1 class="display rv" id="heroTitle">Deepak <span class="l2">Raghunath</span></h1>
 
-  <div class="hero-panel fade-in">
-    <div class="panel-title">Performance Snapshot</div>
-    <div class="signal-item"><span class="signal-label">Ameriprise automation impact</span><span class="signal-value good">+1,400 hours/year</span></div>
-    <div class="signal-item"><span class="signal-label">Ameriprise RMD compliance</span><span class="signal-value good">100% compliant</span></div>
-    <div class="signal-item"><span class="signal-label">Ameriprise portfolio yield uplift</span><span class="signal-value good">~20% improvement</span></div>
-    <div class="signal-item"><span class="signal-label">Accenture risk controls</span><span class="signal-value">$250K+ errors prevented</span></div>
-    <div class="signal-item"><span class="signal-label">Recurring task automation</span><span class="signal-value good">20+ workflows</span></div>
-    <div class="signal-item"><span class="signal-label">Cross-functional production support</span><span class="signal-value">25+ reviews/week</span></div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <h2>Live Financial Engines</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="projects-grid">
-    <div class="project-card featured reveal">
-      <div class="card-num">PROJECT 01 · FEATURED</div>
-      <div class="card-icon">01</div>
-      <h3>Black-Scholes Options Pricer</h3>
-      <div class="card-subtitle">Quantitative Finance · Derivatives Valuation</div>
-      <p class="card-desc">Interactive options pricing engine using the Black-Scholes model. Computes call and put prices, all five Greeks, moneyness classification, and visualizes option value across the full spot price spectrum.</p>
-      <div class="card-tech">
-        <span class="tech-badge">Black-Scholes</span><span class="tech-badge">Greeks</span>
-        <span class="tech-badge">Normal CDF</span><span class="tech-badge">Chart.js</span><span class="tech-badge">JavaScript</span>
+    <div class="hero-grid">
+      <div class="hero-copy rv">
+        <p class="lede">I turn financial data into decisions. 4.5+ years of P&amp;L reporting, month-end close, controls and forecasting at <strong>Ameriprise Financial</strong> and <strong>Accenture</strong> — now building forecasting models and AI-assisted workflows with SQL, Python, Power BI and LLMs.</p>
+        <div class="cta-row">
+          <a class="btn" href="#work">See selected work
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn ghost" href="#lab">Run the live models</a>
+        </div>
+        <dl class="facts">
+          <dt>Based</dt><dd>St. Louis, MO</dd>
+          <dt>Studying</dt><dd>M.S. Business Analytics (FinTech Analytics, STEM) — WashU Olin, Dec 2026</dd>
+          <dt>Previously</dt><dd>Ameriprise Financial · Accenture</dd>
+          <dt>Certified</dt><dd>Microsoft PL-300 · Power BI Data Analyst</dd>
+        </dl>
       </div>
-      <button class="btn-run" onclick="openModal('options')">Run Model <span class="arrow">→</span></button>
-    </div>
 
-    <div class="project-card reveal">
-      <div class="card-num">PROJECT 02</div>
-      <div class="card-icon">02</div>
-      <h3>Portfolio Optimizer</h3>
-      <div class="card-subtitle">Modern Portfolio Theory · Efficient Frontier</div>
-      <p class="card-desc">Build an optimal multi-asset portfolio with expected returns and volatilities. Monte Carlo simulations map the efficient frontier and identify maximum Sharpe and minimum variance allocations.</p>
-      <div class="card-tech">
-        <span class="tech-badge">MPT</span><span class="tech-badge">Sharpe Ratio</span>
-        <span class="tech-badge">Monte Carlo</span><span class="tech-badge">Efficient Frontier</span>
-      </div>
-      <button class="btn-run" onclick="openModal('portfolio')">Run Model <span class="arrow">→</span></button>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="card-num">PROJECT 03</div>
-      <div class="card-icon">03</div>
-      <h3>RMD Compliance Engine</h3>
-      <div class="card-subtitle">Retirement Analytics · IRS §401(a)(9)</div>
-      <p class="card-desc">Implements IRS Uniform Lifetime Table logic, calculates required minimum distributions, flags non-compliance with penalty exposure, and projects ten-year distribution schedules.</p>
-      <div class="card-tech">
-        <span class="tech-badge">IRS Uniform Table</span><span class="tech-badge">Compliance Logic</span>
-        <span class="tech-badge">SECURE 2.0</span><span class="tech-badge">Exception Flags</span>
-      </div>
-      <button class="btn-run" onclick="openModal('rmd')">Run Model <span class="arrow">→</span></button>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="card-num">PROJECT 04</div>
-      <div class="card-icon">04</div>
-      <h3>Idle Cash Yield Optimizer</h3>
-      <div class="card-subtitle">Cash Drag Analysis · Yield Maximization</div>
-      <p class="card-desc">Quantifies cash drag and models reallocation scenarios across money market funds, T-bills, bond ETFs, and dividend strategies to recover basis points at portfolio scale.</p>
-      <div class="card-tech">
-        <span class="tech-badge">Cash Drag</span><span class="tech-badge">Yield Comparison</span>
-        <span class="tech-badge">Scenario Analysis</span><span class="tech-badge">Basis Points</span>
-      </div>
-      <button class="btn-run" onclick="openModal('cash')">Run Model <span class="arrow">→</span></button>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="card-num">PROJECT 05</div>
-      <div class="card-icon">05</div>
-      <h3>Earnings Call Sentiment Analyzer</h3>
-      <div class="card-subtitle">NLP · Financial Text Mining</div>
-      <p class="card-desc">Analyzes earnings call transcripts using a financial-domain NLP lexicon. Scores bullish, bearish, uncertainty, forward-looking, and risk signals with keyword density and category breakdowns.</p>
-      <div class="card-tech">
-        <span class="tech-badge">NLP</span><span class="tech-badge">Sentiment Scoring</span>
-        <span class="tech-badge">Financial Lexicon</span><span class="tech-badge">Text Mining</span>
-      </div>
-      <button class="btn-run" onclick="openModal('nlp')">Run Model <span class="arrow">→</span></button>
+      <figure class="fig rv" aria-labelledby="heroFigCap">
+        <div class="fig-head">
+          <span class="live"><i aria-hidden="true"></i>RetireSim · live</span>
+          <a class="link nw" href="#lab" data-open-tab="retire">Open in the lab →</a>
+        </div>
+        <div class="fig-body">
+          <noscript><p>Turn on JavaScript to run the live simulation.</p></noscript>
+          <canvas class="fig-canvas" id="heroChart" role="img" aria-label="Fan chart of 5,000 simulated retirement portfolio paths over 30 years."></canvas>
+        </div>
+        <div class="fig-stats" aria-live="polite">
+          <div><div class="v" id="hSuccess">—</div><div class="k">Paths that last 30 yrs</div></div>
+          <div><div class="v" id="hMedian">—</div><div class="k">Median ending value</div></div>
+          <div><div class="v" id="hFixed">—</div><div class="k">Without guardrails</div></div>
+        </div>
+        <figcaption class="fig-foot" id="heroFigCap">
+          <span>5,000 simulated paths · $1M · 5% initial withdrawal · guardrails on</span>
+          <span>Illustrative model, not advice</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2>About Deepak</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>Results-driven data and finance analytics professional with 4.5+ years across Ameriprise Financial, Accenture, and WashU CFAR. I build audit-ready systems for financial operations, compliance reporting, and performance monitoring.</p>
-      <p>My AI-focused work includes prompt engineering, AI-assisted analytics, LLM-powered summarization workflows, and automation with Python, n8n agents, Gemini API, JavaScript, and REST integrations.</p>
-      <p>I am currently pursuing an M.S. in Business Analytics (Financial Technology & Analytics) at Washington University in St. Louis (expected December 2026), focusing on options, fixed income, portfolio theory, A/B testing, and text mining.</p>
+<!-- ============ IMPACT ============ -->
+<section class="section" id="impact" aria-labelledby="impactTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>01</b> — Impact</p><h2 class="h2" id="impactTitle">Measured results, <em>with context.</em></h2></div>
+      <p class="rv">Each figure comes from my work in finance operations at Ameriprise Financial and Accenture, shown next to how it was achieved and where.</p>
     </div>
 
-    <div class="about-highlights">
-      <div class="highlight-item reveal"><div class="highlight-icon">A1</div><div class="highlight-text"><strong>Ammy Award 2025 · Ameriprise Financial</strong>Operational excellence recognition among 200+ organization members.</div></div>
-      <div class="highlight-item reveal"><div class="highlight-icon">A2</div><div class="highlight-text"><strong>Best People Award 2021 · Accenture</strong>Awarded among top 5% operations employees for performance and impact.</div></div>
-      <div class="highlight-item reveal"><div class="highlight-icon">A3</div><div class="highlight-text"><strong>AI-Assisted Research · WashU CFAR</strong>Built faculty-list verification workflow across 150 universities using scraping, LinkedIn validation, and structured source tracking.</div></div>
-      <div class="highlight-item reveal"><div class="highlight-icon">A4</div><div class="highlight-text"><strong>PL-300: Microsoft Power BI Data Analyst</strong>Certified in dashboards, DAX, automation, data modeling, and reporting.</div></div>
-      <div class="highlight-item reveal"><div class="highlight-icon">A5</div><div class="highlight-text"><strong>B.Com Financial Markets · University of Mumbai</strong>Jai Hind College · CGPA 9.0/10 foundation in capital markets.</div></div>
+    <div class="ledger">
+      <div class="ledger-row rv">
+        <div class="fig-n">1,400<small>+ hrs/yr</small></div>
+        <div><h3>Reporting time saved every year</h3><p>Self-serve Power BI dashboards and KPI frameworks, adopted org-wide for real-time leadership visibility.</p></div>
+        <div class="src">Ameriprise · 2023–25</div>
+      </div>
+      <div class="ledger-row rv">
+        <div class="fig-n">40<small>% faster</small></div>
+        <div><h3>Month-end close turnaround</h3><p>SQL queries written with IT feed ledger data into Excel VBA macros across 25 of 45 close processes, with 95% SLA adherence maintained.</p></div>
+        <div class="src">Accenture · 2021–22</div>
+      </div>
+      <div class="ledger-row rv">
+        <div class="fig-n">$250<small>K+</small></div>
+        <div><h3>Financial discrepancies resolved</h3><p>P&amp;L and reconciliation reporting in Power BI, used across audit and remediation. Exception-checking rules prevented a further $200K+ in potential errors.</p></div>
+        <div class="src">Accenture · 2021–22</div>
+      </div>
+      <div class="ledger-row rv">
+        <div class="fig-n">100<small>%</small></div>
+        <div><h3>RMD compliance, no IRS penalties</h3><p>Exception-monitoring dashboard with automated age-based checks. <a class="link" href="#lab" data-open-tab="rmd">Try a synthetic version →</a></p></div>
+        <div class="src">Ameriprise · 2023–25</div>
+      </div>
+      <div class="ledger-row rv">
+        <div class="fig-n">+20<small>% YoY</small></div>
+        <div><h3>On-time completion of portfolio reviews</h3><p>An auto-refreshing control dashboard flagged at-risk deadlines across 25+ advisor portfolio reviews a week, protecting advisory-fee revenue.</p></div>
+        <div class="src">Ameriprise · 2023–25</div>
+      </div>
+      <div class="ledger-row rv">
+        <div class="fig-n">30<small>+ SOPs</small></div>
+        <div><h3>Close and reporting procedures written</h3><p>Paired with cross-training that saved $8,000 a year through less error rework and faster onboarding.</p></div>
+        <div class="src">Accenture · 2021–22</div>
+      </div>
     </div>
-  </div>
-</section>
 
-<section id="ai-work">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <h2>AI Experience</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="ai-grid">
-    <article class="ai-card reveal">
-      <div class="ai-role">Research Assistant · WashU CFAR</div>
-      <h4>AI-Assisted University Faculty Intelligence</h4>
-      <p>Built a Python workflow with web scraping, official roster checks, and LinkedIn validation to compile auditable finance-faculty datasets across 150 universities, accelerated by AI search and summarization prompts.</p>
-    </article>
-    <article class="ai-card reveal">
-      <div class="ai-role">Project · May 2026</div>
-      <h4>Morning Brief AI Agent</h4>
-      <p>Built a self-hosted n8n agent that ingests Financial Times RSS, uses Gemini 2.5 Flash to rank relevance for FinTech priorities, and sends editorial market briefs by category via Gmail OAuth automation.</p>
-    </article>
-    <article class="ai-card reveal">
-      <div class="ai-role">Product Prototype</div>
-      <h4>DataPulse KPI Builder</h4>
-      <p>Designed AI-assisted analytics logic that converts raw CSV data into KPI dashboards with automated field discovery, insight generation, outlier checks, and correlation summaries for non-technical users.</p>
-    </article>
-    <article class="ai-card reveal">
-      <div class="ai-role">Simulation App</div>
-      <h4>RetireSim Monte Carlo Planner</h4>
-      <p>Built a retirement planner running 10,000 Monte Carlo simulations with success-rate fan charts, withdrawal-risk modeling, and personalized guidance to evaluate multiple market scenarios.</p>
-    </article>
-  </div>
-</section>
-
-<section class="contact-strip reveal" id="contact">
-  <div class="contact-grid">
-    <div class="contact-pill">
-      <div class="contact-label">Email</div>
-      <a href="mailto:deepakraghunath1999@gmail.com">deepakraghunath1999@gmail.com</a>
-    </div>
-    <div class="contact-pill">
-      <div class="contact-label">Phone</div>
-      <a href="tel:+13143099932">+1 314-309-9932</a>
-    </div>
-    <div class="contact-pill">
-      <div class="contact-label">LinkedIn</div>
-      <a href="https://www.linkedin.com/in/deepak-raghunath" target="_blank">linkedin.com/in/deepak-raghunath</a>
-    </div>
-    <div class="contact-pill">
-      <div class="contact-label">Location</div>
-      <span>St. Louis, MO</span>
+    <div class="awards">
+      <div class="award rv"><p class="yr">2025 · Ameriprise Financial</p><h3>Ammy Award</h3><p>Operational Excellence, selected from 200+ members of the organization.</p></div>
+      <div class="award rv"><p class="yr">2021 · Accenture</p><h3>Best People Award</h3><p>Given to the top 5% of Accenture Operations employees.</p></div>
+      <div class="award rv"><p class="yr">Certification · Microsoft</p><h3>PL-300</h3><p>Microsoft Certified: Power BI Data Analyst Associate.</p></div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-name">Deepak Raghunath</div>
-  <div class="footer-links">
-    <a href="mailto:deepakraghunath1999@gmail.com">deepakraghunath1999@gmail.com</a>
-    <a href="tel:+13143099932">+1 314-309-9932</a>
-    <a href="https://www.linkedin.com/in/deepak-raghunath" target="_blank">LinkedIn ↗</a>
-    <a href="#ai-work">AI Projects</a>
-    <a href="#about">About</a>
-  </div>
-</footer>
+<!-- ============ WORK ============ -->
+<section class="section" id="work" aria-labelledby="workTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>02</b> — Selected work</p><h2 class="h2" id="workTitle">Four problems, <em>and how I worked them.</em></h2></div>
+      <p class="rv">For each case: what was at stake, what I did myself, and where it stands now. Employer and client data stay private.</p>
+    </div>
 
-<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modalContent"></div>
-</div>
+    <div class="cases">
+      <!-- Case 1 -->
+      <article class="case rv" aria-labelledby="c1">
+        <div class="case-main">
+          <div class="case-meta"><span class="case-idx">01</span><span class="chip done">Shipped</span><span class="org">Ameriprise Financial · Senior Financial Advisory Analyst · 2023–2025</span></div>
+          <h3 class="h3" id="c1">Real-time visibility for advisory leadership, with deadlines flagged before they slip.</h3>
+          <div class="case-cols">
+            <div><h4>The context</h4><p>Advisors were running 25+ portfolio reviews a week, and leadership needed a real-time view of them. Late reviews put advisory-fee revenue at risk, and a missed required minimum distribution (RMD) brings IRS penalties.</p></div>
+            <div><h4>What I did</h4><ul>
+              <li>Built self-serve Power BI dashboards and KPI frameworks, later adopted org-wide.</li>
+              <li>Built an auto-refreshing control dashboard that flags at-risk review deadlines.</li>
+              <li>Built an RMD exception monitor that runs automated age-based checks.</li>
+            </ul></div>
+          </div>
+          <div class="tools"><span>Power BI</span><span>DAX</span><span>KPI design</span><span>Exception rules</span><span>Excel</span></div>
+        </div>
+        <aside class="case-side" aria-label="Outcomes and system flow">
+          <div class="outcomes">
+            <div class="outcome"><div class="v">1,400+ hrs</div><div class="k">saved per year</div></div>
+            <div class="outcome"><div class="v">+20% YoY</div><div class="k">on-time review completion</div></div>
+            <div class="outcome"><div class="v">100%</div><div class="k">RMD compliance · Ammy Award 2025</div></div>
+          </div>
+          <svg class="flow" viewBox="0 0 300 64" role="img" aria-label="Flow: account data, rule layer, Power BI, flags to advisors">
+            <rect class="box" x="1" y="14" width="64" height="36" rx="8"/><text x="33" y="36" text-anchor="middle">Accounts</text>
+            <path class="ln" d="M65 32h13"/>
+            <rect class="hl" x="78" y="14" width="68" height="36" rx="8"/><text x="112" y="36" text-anchor="middle">Rules</text>
+            <path class="ln" d="M146 32h13"/>
+            <rect class="box" x="159" y="14" width="68" height="36" rx="8"/><text x="193" y="36" text-anchor="middle">Power BI</text>
+            <path class="ln a" d="M227 32h13"/>
+            <rect class="box" x="240" y="14" width="59" height="36" rx="8"/><text x="269.5" y="36" text-anchor="middle">Flags</text>
+          </svg>
+          <p class="note"><a class="link" href="#lab" data-open-tab="rmd">Run a synthetic RMD monitor built on the same logic →</a></p>
+        </aside>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case rv" aria-labelledby="c2">
+        <div class="case-main">
+          <div class="case-meta"><span class="case-idx">02</span><span class="chip done">Shipped</span><span class="org">Accenture · Premium Accounting Analyst · 2021–2022</span></div>
+          <h3 class="h3" id="c2">Cutting month-end close turnaround by 40% while keeping controls in place.</h3>
+          <div class="case-cols">
+            <div><h4>The context</h4><p>The team ran 45 month-end close processes against service-level targets. Each close meant ledger pulls, variance analysis, reconciliations and close packs, and every error meant rework.</p></div>
+            <div><h4>What I did</h4><ul>
+              <li>Owned 25 of the 45 processes, covering variance analysis, reconciliations and close packs.</li>
+              <li>Wrote SQL with IT to feed ledger data into Excel VBA macros.</li>
+              <li>Built P&amp;L and reconciliation reporting in Power BI, with exception-checking rules.</li>
+              <li>Wrote 30+ SOPs and led cross-training. Served as IT point of contact for a 50+ person team.</li>
+            </ul></div>
+          </div>
+          <div class="tools"><span>SQL</span><span>Excel VBA</span><span>Power BI</span><span>Reconciliations</span><span>Variance analysis</span></div>
+        </div>
+        <aside class="case-side" aria-label="Outcomes and system flow">
+          <div class="outcomes">
+            <div class="outcome"><div class="v">−40%</div><div class="k">close turnaround · 95% SLA held</div></div>
+            <div class="outcome"><div class="v">$250K+</div><div class="k">discrepancies resolved; $200K+ errors prevented</div></div>
+            <div class="outcome"><div class="v">$8,000/yr</div><div class="k">saved via SOPs and cross-training · Best People Award 2021</div></div>
+          </div>
+          <svg class="flow" viewBox="0 0 300 64" role="img" aria-label="Flow: ledger via SQL, VBA macros, exception checks, close pack">
+            <rect class="box" x="1" y="14" width="64" height="36" rx="8"/><text x="33" y="36" text-anchor="middle">Ledger</text>
+            <path class="ln" d="M65 32h13"/>
+            <rect class="box" x="78" y="14" width="68" height="36" rx="8"/><text x="112" y="36" text-anchor="middle">SQL→VBA</text>
+            <path class="ln" d="M146 32h13"/>
+            <rect class="hl" x="159" y="14" width="68" height="36" rx="8"/><text x="193" y="36" text-anchor="middle">Checks</text>
+            <path class="ln a" d="M227 32h13"/>
+            <rect class="box" x="240" y="14" width="59" height="36" rx="8"/><text x="269.5" y="36" text-anchor="middle">Close</text>
+          </svg>
+          <p class="note">I also built a global productivity report that gave managers per-employee output.</p>
+        </aside>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case rv" aria-labelledby="c3">
+        <div class="case-main">
+          <div class="case-meta"><span class="case-idx">03</span><span class="chip done">Delivered</span><span class="org">B&amp;N Inspection · Data Analyst Intern, Financial Data &amp; Reporting · Summer 2026</span></div>
+          <h3 class="h3" id="c3">Eleven years of inspection PDFs turned into one source of truth, with an LLM doing the extraction.</h3>
+          <div class="case-cols">
+            <div><h4>The context</h4><p>Eleven years of inspection data was fragmented across client sites, and much of it sat in unstructured inspection PDFs. Without a single source of truth, KPI reporting and forecasting were out of reach.</p></div>
+            <div><h4>What I did</h4><ul>
+              <li>Consolidated the fragmented data into a single source of truth across client sites.</li>
+              <li>Built Claude (LLM) workflows that classify and geolocate assets from the inspection PDFs.</li>
+              <li>Built a VBA-driven Excel intake workbook with cascading validation that feeds the projection models.</li>
+            </ul></div>
+          </div>
+          <div class="tools"><span>Claude LLM</span><span>Document extraction</span><span>Geolocation</span><span>Excel VBA</span><span>Data modeling</span></div>
+        </div>
+        <aside class="case-side" aria-label="Outcomes and system flow">
+          <div class="outcomes">
+            <div class="outcome"><div class="v">11 years</div><div class="k">of records consolidated</div></div>
+            <div class="outcome"><div class="v">1 source</div><div class="k">of truth for KPI reporting and forecasting</div></div>
+          </div>
+          <svg class="flow" viewBox="0 0 300 64" role="img" aria-label="Flow: PDFs, LLM extraction, validated intake, KPIs">
+            <rect class="box" x="1" y="14" width="64" height="36" rx="8"/><text x="33" y="36" text-anchor="middle">PDFs</text>
+            <path class="ln" d="M65 32h13"/>
+            <rect class="hl" x="78" y="14" width="68" height="36" rx="8"/><text x="112" y="36" text-anchor="middle">LLM</text>
+            <path class="ln" d="M146 32h13"/>
+            <rect class="box" x="159" y="14" width="68" height="36" rx="8"/><text x="193" y="36" text-anchor="middle">Intake</text>
+            <path class="ln a" d="M227 32h13"/>
+            <rect class="box" x="240" y="14" width="59" height="36" rx="8"/><text x="269.5" y="36" text-anchor="middle">KPIs</text>
+          </svg>
+          <p class="note">Client data and asset locations are confidential, so none are shown here.</p>
+        </aside>
+      </article>
+
+      <!-- Case 4 -->
+      <article class="case rv" aria-labelledby="c4">
+        <div class="case-main">
+          <div class="case-meta"><span class="case-idx">04</span><span class="chip live-c">In progress</span><span class="org">Bunge · WashU Olin CEL Practicum · Student Consultant · Aug 2026–present</span></div>
+          <h3 class="h3" id="c4">Can retail scanner data predict demand for vegetable fats and oils?</h3>
+          <div class="case-cols">
+            <div><h4>The question</h4><p>Bunge is a Fortune 500 agribusiness and food-ingredients company. We are testing whether Nielsen retail sales data can serve as a leading indicator of food manufacturers' demand for Bunge's vegetable fats and oils, to sharpen demand forecasting and planning.</p></div>
+            <div><h4>My workstream</h4><ul>
+              <li>Cleaning and merging Nielsen retail data with Bunge demand data in SQL and Python, aligning products, categories and time periods.</li>
+              <li>Building a forecasting model that converts retail sales signals into projected ingredient demand.</li>
+              <li>Using Claude (LLM) to speed up the analysis.</li>
+            </ul></div>
+          </div>
+          <div class="tools"><span>SQL</span><span>Python</span><span>pandas</span><span>Forecasting</span><span>Nielsen</span></div>
+        </div>
+        <aside class="case-side" aria-label="Status and approach">
+          <div class="outcomes">
+            <div class="outcome"><div class="v">Fortune 500</div><div class="k">client · team engagement, Fall 2026</div></div>
+            <div class="outcome"><div class="v">Results pending</div><div class="k">findings go to the client first</div></div>
+          </div>
+          <svg class="flow" viewBox="0 0 300 64" role="img" aria-label="Flow: retail data and demand data merged, model, forecast">
+            <rect class="box" x="1" y="14" width="64" height="36" rx="8"/><text x="33" y="36" text-anchor="middle">Nielsen</text>
+            <path class="ln" d="M65 32h13"/>
+            <rect class="box" x="78" y="14" width="68" height="36" rx="8"/><text x="112" y="36" text-anchor="middle">Merge</text>
+            <path class="ln" d="M146 32h13"/>
+            <rect class="hl" x="159" y="14" width="68" height="36" rx="8"/><text x="193" y="36" text-anchor="middle">Model</text>
+            <path class="ln a" d="M227 32h13"/>
+            <rect class="box" x="240" y="14" width="59" height="36" rx="8"/><text x="269.5" y="36" text-anchor="middle">Demand</text>
+          </svg>
+          <p class="note">This is a team project. The work listed is my own part of it, and no client data appears here.</p>
+        </aside>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAB ============ -->
+<section class="section lab" id="lab" aria-labelledby="labTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>03</b> — Decision lab</p><h2 class="h2" id="labTitle">Don't take my word for it. <em>Run the models.</em></h2></div>
+      <p class="rv">Four models I built, running entirely in your browser. You can change every input, the assumptions are written next to each model, and the same inputs always give the same answer.</p>
+    </div>
+
+    <div class="lab-shell rv">
+      <div class="tabs" role="tablist" aria-label="Models">
+        <button class="tab" role="tab" id="tab-retire" aria-controls="panel-retire" aria-selected="true"><span class="t">RetireSim</span><span class="s">Monte Carlo · guardrails</span></button>
+        <button class="tab" role="tab" id="tab-rmd" aria-controls="panel-rmd" aria-selected="false" tabindex="-1"><span class="t">RMD monitor</span><span class="s">Compliance exceptions</span></button>
+        <button class="tab" role="tab" id="tab-bs" aria-controls="panel-bs" aria-selected="false" tabindex="-1"><span class="t">Options &amp; Greeks</span><span class="s">Black-Scholes</span></button>
+        <button class="tab" role="tab" id="tab-pf" aria-controls="panel-pf" aria-selected="false" tabindex="-1"><span class="t">Efficient frontier</span><span class="s">Mean-variance</span></button>
+      </div>
+
+      <!-- RetireSim -->
+      <div class="panel" role="tabpanel" id="panel-retire" aria-labelledby="tab-retire">
+        <div class="controls">
+          <h3>RetireSim</h3>
+          <p class="intro">How long does a retirement portfolio last, and what do spending guardrails buy you? The model runs 5,000 simulated market paths and re-runs every time you change an input.</p>
+          <div class="ctl"><div class="ctl-top"><label for="rs_P0">Starting portfolio</label><output id="rs_P0_o"></output></div><input type="range" id="rs_P0" min="250000" max="3000000" step="50000" value="1000000"></div>
+          <div class="ctl"><div class="ctl-top"><label for="rs_rate">Initial withdrawal rate</label><output id="rs_rate_o"></output></div><input type="range" id="rs_rate" min="3" max="7" step="0.1" value="5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="rs_years">Horizon</label><output id="rs_years_o"></output></div><input type="range" id="rs_years" min="15" max="40" step="1" value="30"></div>
+          <div class="ctl"><div class="ctl-top"><label for="rs_mu">Mean annual return</label><output id="rs_mu_o"></output></div><input type="range" id="rs_mu" min="3" max="10" step="0.5" value="7"></div>
+          <div class="ctl"><div class="ctl-top"><label for="rs_sigma">Volatility</label><output id="rs_sigma_o"></output></div><input type="range" id="rs_sigma" min="5" max="25" step="1" value="15"></div>
+          <div class="ctl"><div class="ctl-top"><label for="rs_infl">Inflation</label><output id="rs_infl_o"></output></div><input type="range" id="rs_infl" min="1" max="5" step="0.25" value="2.5"></div>
+          <div class="ctl"><span class="small muted" id="rs_guard_l">Guyton-Klinger guardrails</span>
+            <div class="seg" role="group" aria-labelledby="rs_guard_l"><button type="button" data-guard="1" aria-pressed="true">On</button><button type="button" data-guard="0" aria-pressed="false">Off (fixed real spending)</button></div></div>
+          <p class="assume">Annual steps, with each withdrawal taken at the start of the year. Returns are lognormal with the mean and volatility you set. The guardrails work like this: skip the inflation raise after a losing year if the withdrawal rate is above where it started; cut spending 10% if the rate is 20% above its start (except in the final 15 years); raise it 10% if the rate is 20% below its start. The random seed is fixed. Illustrative only, not financial advice.</p>
+        </div>
+        <div class="output">
+          <div class="kpis" aria-live="polite">
+            <div class="kpi"><div class="k">Success rate</div><div class="v" id="rs_k1">—</div><div class="d" id="rs_k1d"></div></div>
+            <div class="kpi"><div class="k">Median ending value</div><div class="v" id="rs_k2">—</div><div class="d">nominal dollars</div></div>
+            <div class="kpi"><div class="k">10th pct ending</div><div class="v" id="rs_k3">—</div><div class="d">bad-luck outcome</div></div>
+            <div class="kpi"><div class="k">Lowest real income</div><div class="v" id="rs_k4">—</div><div class="d" id="rs_k4d">median path, vs year 1</div></div>
+          </div>
+          <canvas class="chart" id="rs_chart" role="img" aria-label="Retirement portfolio fan chart"></canvas>
+          <div class="legend"><span><i style="background:var(--band-outer)"></i>5th–95th percentile</span><span><i style="background:var(--band-inner)"></i>25th–75th</span><span><i style="background:var(--accent);height:3px"></i>Median</span><span><i style="background:var(--path);height:2px"></i>Sample paths</span></div>
+          <p class="read" id="rs_read"></p>
+          <details class="data"><summary>View percentile table</summary><div class="tbl-wrap"><table id="rs_table"></table></div></details>
+        </div>
+      </div>
+
+      <!-- RMD -->
+      <div class="panel" role="tabpanel" id="panel-rmd" aria-labelledby="tab-rmd" hidden>
+        <div class="controls">
+          <h3>RMD exception monitor</h3>
+          <p class="intro">A synthetic version of the logic behind 100% RMD compliance at Ameriprise. It checks each account's age against the rules, applies the IRS divisors and scheduled distributions, and escalates flags as the December 31 deadline gets closer.</p>
+          <div class="ctl full"><div class="ctl-top"><label for="rmd_asof">Review date</label><output id="rmd_asof_o"></output></div><input type="range" id="rmd_asof" min="0" max="5" step="1" value="3"></div>
+          <div class="ctl"><span class="small muted" id="rmd_f_l">Show</span>
+            <div class="seg" role="group" aria-labelledby="rmd_f_l"><button type="button" data-filter="all" aria-pressed="true">All accounts</button><button type="button" data-filter="ex" aria-pressed="false">Exceptions only</button></div></div>
+          <p class="assume">Ten fictional accounts. The model applies SECURE 2.0 start ages (73 for people born 1951–59, 75 for 1960 and later) and the IRS Uniform Lifetime Table to prior year-end balances. First-year RMDs can be deferred to April 1 of the following year. A shortfall incurs a 25% excise tax, or 10% if corrected in time. Illustrative only, not tax advice.</p>
+        </div>
+        <div class="output">
+          <div class="kpis" aria-live="polite">
+            <div class="kpi"><div class="k">RMDs due in 2026</div><div class="v" id="rmd_k1">—</div><div class="d">of 10 accounts</div></div>
+            <div class="kpi"><div class="k">Met or on track</div><div class="v pos" id="rmd_k2">—</div><div class="d">incl. first-year deferrals</div></div>
+            <div class="kpi"><div class="k">Exceptions</div><div class="v" id="rmd_k3">—</div><div class="d">need an advisor action</div></div>
+            <div class="kpi"><div class="k">Excise exposure</div><div class="v" id="rmd_k4">—</div><div class="d">25% of at-risk shortfall</div></div>
+          </div>
+          <p class="read" id="rmd_read"></p>
+          <div class="tbl-wrap"><table class="rmd-table" id="rmd_table"></table></div>
+        </div>
+      </div>
+
+      <!-- Black-Scholes -->
+      <div class="panel" role="tabpanel" id="panel-bs" aria-labelledby="tab-bs" hidden>
+        <div class="controls">
+          <h3>Options &amp; Greeks</h3>
+          <p class="intro">Black-Scholes pricing for a European option. It shows the price, all five Greeks, and how the option's value changes across spot prices compared with its payoff at expiry.</p>
+          <div class="ctl"><span class="small muted" id="bs_t_l">Option type</span>
+            <div class="seg" role="group" aria-labelledby="bs_t_l"><button type="button" data-type="call" aria-pressed="true">Call</button><button type="button" data-type="put" aria-pressed="false">Put</button></div></div>
+          <div class="ctl"><div class="ctl-top"><label for="bs_S">Spot price</label><output id="bs_S_o"></output></div><input type="range" id="bs_S" min="50" max="200" step="1" value="100"></div>
+          <div class="ctl"><div class="ctl-top"><label for="bs_K">Strike price</label><output id="bs_K_o"></output></div><input type="range" id="bs_K" min="50" max="200" step="1" value="105"></div>
+          <div class="ctl"><div class="ctl-top"><label for="bs_T">Time to expiry</label><output id="bs_T_o"></output></div><input type="range" id="bs_T" min="0.05" max="2" step="0.05" value="0.5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="bs_r">Risk-free rate</label><output id="bs_r_o"></output></div><input type="range" id="bs_r" min="0" max="10" step="0.25" value="4.5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="bs_v">Volatility (σ)</label><output id="bs_v_o"></output></div><input type="range" id="bs_v" min="5" max="80" step="1" value="25"></div>
+          <p class="assume">Assumes no dividends and constant rates and volatility. Theta is per calendar day; vega and rho are per 1 percentage point. Checked against the textbook case (S = K = 100, T = 1, r = 5%, σ = 20%), where the call is worth 10.4506 and the put 5.5735.</p>
+        </div>
+        <div class="output">
+          <div class="kpis" aria-live="polite">
+            <div class="kpi"><div class="k">Option price</div><div class="v acc" id="bs_price">—</div><div class="d" id="bs_split"></div></div>
+            <div class="kpi"><div class="k">Delta Δ</div><div class="v" id="bs_delta">—</div><div class="d">per $1 in spot</div></div>
+            <div class="kpi"><div class="k">Gamma Γ</div><div class="v" id="bs_gamma">—</div><div class="d">Δ change per $1</div></div>
+            <div class="kpi"><div class="k">Vega ν</div><div class="v" id="bs_vega">—</div><div class="d">per 1 vol pt</div></div>
+            <div class="kpi"><div class="k">Theta Θ</div><div class="v" id="bs_theta">—</div><div class="d">per day</div></div>
+            <div class="kpi"><div class="k">Rho ρ</div><div class="v" id="bs_rho">—</div><div class="d">per 1 rate pt</div></div>
+            <div class="kpi"><div class="k">Moneyness</div><div class="v" id="bs_money">—</div><div class="d" id="bs_moneyd"></div></div>
+            <div class="kpi"><div class="k">d₁ / d₂</div><div class="v" id="bs_d">—</div><div class="d">standard normal inputs</div></div>
+          </div>
+          <canvas class="chart" id="bs_chart" role="img" aria-label="Option value versus spot price"></canvas>
+          <div class="legend"><span><i style="background:var(--accent);height:3px"></i>Value today</span><span><i style="background:var(--ink);height:2px;opacity:.6"></i>Payoff at expiry</span><span><i style="background:var(--accent);width:10px;height:10px;border-radius:50%"></i>Current spot</span></div>
+          <p class="read" id="bs_read"></p>
+        </div>
+      </div>
+
+      <!-- Frontier -->
+      <div class="panel" role="tabpanel" id="panel-pf" aria-labelledby="tab-pf" hidden>
+        <div class="controls">
+          <h3>Efficient frontier</h3>
+          <p class="intro">A long-only mean-variance allocation across four asset classes, with correlations included. It finds the maximum-Sharpe (tangency) portfolio and the minimum-variance portfolio.</p>
+          <div class="ctl"><div class="ctl-top"><label for="pf_r0">US equity — expected return</label><output id="pf_r0_o"></output></div><input type="range" id="pf_r0" min="2" max="12" step="0.25" value="7"></div>
+          <div class="ctl"><div class="ctl-top"><label for="pf_r1">Int'l equity — expected return</label><output id="pf_r1_o"></output></div><input type="range" id="pf_r1" min="2" max="12" step="0.25" value="7.5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="pf_r2">US bonds — expected return</label><output id="pf_r2_o"></output></div><input type="range" id="pf_r2" min="1" max="8" step="0.25" value="4.5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="pf_r3">REITs — expected return</label><output id="pf_r3_o"></output></div><input type="range" id="pf_r3" min="2" max="12" step="0.25" value="6.5"></div>
+          <div class="ctl"><div class="ctl-top"><label for="pf_c">Stock–bond correlation</label><output id="pf_c_o"></output></div><input type="range" id="pf_c" min="-0.5" max="0.8" step="0.05" value="0.1"></div>
+          <div class="ctl"><div class="ctl-top"><label for="pf_rf">Risk-free rate</label><output id="pf_rf_o"></output></div><input type="range" id="pf_rf" min="0" max="6" step="0.25" value="4"></div>
+          <p class="assume">Assumed volatilities: US equity 16%, international equity 18%, US bonds 6%, REITs 19%. Equity–equity correlation is 0.80, equity–REIT 0.60–0.65, and bond–REIT 0.25. Results come from 6,000 sampled long-only portfolios plus the four single-asset corners. These are illustrative assumptions, not capital-market forecasts.</p>
+        </div>
+        <div class="output">
+          <div class="kpis" aria-live="polite">
+            <div class="kpi"><div class="k">Max-Sharpe return</div><div class="v" id="pf_k1">—</div></div>
+            <div class="kpi"><div class="k">Max-Sharpe volatility</div><div class="v" id="pf_k2">—</div></div>
+            <div class="kpi"><div class="k">Sharpe ratio</div><div class="v acc" id="pf_k3">—</div></div>
+            <div class="kpi"><div class="k">Min-variance vol</div><div class="v" id="pf_k4">—</div></div>
+          </div>
+          <canvas class="chart" id="pf_chart" role="img" aria-label="Efficient frontier scatter plot"></canvas>
+          <div class="legend"><span><i style="background:var(--path);height:8px;width:8px;border-radius:50%"></i>Sampled portfolios</span><span><i style="background:var(--ink);height:2px"></i>Efficient frontier</span><span><i style="background:var(--accent);height:2px"></i>Capital market line</span><span><i style="background:var(--accent);width:10px;height:10px;border-radius:50%"></i>Max Sharpe</span></div>
+          <div><p class="small muted" style="margin-bottom:8px">Max-Sharpe allocation</p><div class="alloc" id="pf_alloc" aria-live="polite"></div></div>
+          <p class="read" id="pf_read"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOW ============ -->
+<section class="section" id="now" aria-labelledby="nowTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>04</b> — Now</p><h2 class="h2" id="nowTitle">What I'm working on <em>this fall.</em></h2></div>
+      <p class="rv">Alongside the Bunge practicum, my time goes to a startup, a research panel and teaching. I've listed my own contribution to each, not the team's.</p>
+    </div>
+    <div class="now">
+      <article class="tile rv">
+        <p class="when">Jul 2026 – present · Startup</p>
+        <h3>Ainstein</h3>
+        <p class="role">Co-Founder &amp; CFO</p>
+        <p>Ainstein is a game-like platform for people who barely use AI yet. I set the product direction and commercial strategy, and brought together the four-person product, design and engineering team.</p>
+        <p>I built a 36-month driver-based financial model with Bear, Base and Bull scenarios. It covers the revenue build, unit economics, P&amp;L, burn, runway and use of funds, and guides pricing and fundraising decisions.</p>
+        <div class="tools"><span>Driver-based model</span><span>Unit economics</span><span>Scenarios</span></div>
+      </article>
+      <article class="tile rv">
+        <p class="when">Aug 2026 – present · Research</p>
+        <h3>RBI banking regulation study</h3>
+        <p class="role">Research Assistant, WashU</p>
+        <p>I'm building a 1972–1998 district-level panel from digitized Reserve Bank of India Basic Statistical Returns. The study measures how RBI regulation changed where bank deposits, branches and credit went.</p>
+        <p>My work includes district and state boundary crosswalks that keep 25+ years comparable, cleaning and validating the panel in Stata, and dating regulatory changes from RBI circulars.</p>
+        <div class="tools"><span>Stata</span><span>Panel data</span><span>Crosswalks</span><span>Econometrics</span></div>
+      </article>
+      <article class="tile rv">
+        <p class="when">Aug 2026 – present · Teaching</p>
+        <h3>Graduate Teaching Assistant</h3>
+        <p class="role">WashU Olin</p>
+        <p>I hold virtual office hours and grade SQL and Tableau labs and homework, calibrating marks with the other TAs. The courses are Database Design &amp; SQL, Data Visualization, and Big Data &amp; Cloud Computing.</p>
+        <p>Before this, as a CFAR research assistant, I standardized finance-faculty databases across roughly 150 business schools.</p>
+        <div class="tools"><span>SQL</span><span>Tableau</span><span>Spark / Databricks</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section" id="experience" aria-labelledby="expTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>05</b> — Experience</p><h2 class="h2" id="expTitle">The full record.</h2></div>
+      <p class="rv">All my roles, newest first. The résumé has the complete detail. <a class="link nw" href="Deepak_Raghunath_Resume.pdf" target="_blank" rel="noopener">Download PDF →</a></p>
+    </div>
+    <div class="timeline">
+      <p class="group-label">Graduate, startup &amp; research</p>
+      <div class="job rv"><div class="dates">Aug 2026 – Present</div><div><h3>Student Consultant, Demand Forecasting · <span class="co">Bunge (WashU Olin CEL Practicum)</span></h3><p>Testing whether Nielsen retail sales data leads food manufacturers' demand for Bunge's vegetable fats and oils. I merge the data in SQL and Python and build the forecasting model.</p></div><div class="loc">St. Louis, MO</div></div>
+      <div class="job rv"><div class="dates">Jul 2026 – Present</div><div><h3>Co-Founder &amp; CFO · <span class="co">Ainstein</span></h3><p>Product direction, commercial strategy and team assembly. I built the 36-month driver-based financial model with Bear, Base and Bull scenarios.</p></div><div class="loc">St. Louis, MO</div></div>
+      <div class="job rv"><div class="dates">Mar 2026 – Present</div><div><h3>Research Assistant &amp; Graduate Teaching Assistant · <span class="co">Washington University in St. Louis</span></h3>
+        <ul class="sub">
+          <li><strong>Banking Regulation Study</strong> (Aug 2026 – present): RBI district-level panel covering 1972–1998, with boundary crosswalks and Stata validation.</li>
+          <li><strong>Graduate TA</strong> (Aug 2026 – present): Database Design &amp; SQL, Data Visualization, Big Data &amp; Cloud Computing.</li>
+          <li><strong>Wells Fargo Advisors CFAR</strong> (Mar – Jul 2026): standardized finance-faculty databases across roughly 150 business schools.</li>
+        </ul></div><div class="loc">St. Louis, MO</div></div>
+      <div class="job rv"><div class="dates">Jun 2026 – Aug 2026</div><div><h3>Data Analyst Intern, Financial Data &amp; Reporting · <span class="co">B&amp;N Inspection</span></h3><p>Consolidated 11 years of inspection data into a single source of truth. Built Claude LLM workflows to classify and geolocate assets, and a VBA intake workbook that feeds the projection models.</p></div><div class="loc">St. Louis, MO</div></div>
+
+      <p class="group-label">Finance &amp; analytics</p>
+      <div class="job rv"><div class="dates">Jan 2023 – Aug 2025</div><div><h3>Senior Financial Advisory Analyst · <span class="co">Ameriprise Financial</span></h3><p>Power BI dashboards and KPI frameworks that saved 1,400+ hours a year. A control dashboard that lifted on-time review completion 20% YoY. RMD exception monitoring that achieved 100% compliance. Ammy Award 2025.</p></div><div class="loc">Gurugram, India</div></div>
+      <div class="job rv"><div class="dates">Mar 2021 – Dec 2022</div><div><h3>Premium Accounting Analyst · <span class="co">Accenture</span></h3><p>Owned month-end close for 25 of 45 processes and cut turnaround 40% with SQL→VBA automation. Resolved $250K+ in discrepancies, wrote 30+ SOPs, and served as IT point of contact for a 50+ person team. Best People Award 2021.</p></div><div class="loc">Noida, India</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILDS ============ -->
+<section class="section" id="builds" aria-labelledby="buildTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>06</b> — Models &amp; side builds</p><h2 class="h2" id="buildTitle">Things I built <em>to learn by doing.</em></h2></div>
+      <p class="rv">Financial models and AI tools I built on my own time. Each one is labeled with what it is.</p>
+    </div>
+    <div class="builds">
+      <article class="build rv"><p class="tag">Excel model</p><h3>Three-statement model: data-center business</h3><p>An integrated income statement, balance sheet and cash-flow model for a capital-intensive data-center business. Revenue is built from contracted compute capacity (MW/GW), which drives the capex and depreciation schedule and a debt and financing waterfall. Scenario toggles included.</p></article>
+      <article class="build rv"><p class="tag">Web app · in the lab above</p><h3>RetireSim Monte Carlo planner</h3><p>A 5,000-path Monte Carlo projection engine with Guyton-Klinger guardrails and scenario fan charts. I'm extending it into a full-stack React/TypeScript planner with LLM-generated guidance.</p></article>
+      <article class="build rv"><p class="tag">AI agent · self-hosted</p><h3>Morning Brief agent</h3><p>An n8n agent that pulls Financial Times RSS feeds, uses Gemini 2.5 Flash to rank stories for fintech relevance, and emails a categorized morning brief through Gmail OAuth. Runs in Docker.</p></article>
+      <article class="build rv"><p class="tag">Prototype</p><h3>DataPulse KPI builder</h3><p>Turns a raw CSV into a KPI dashboard. It detects fields automatically, generates insights, checks for outliers and summarizes correlations, so people without a technical background can use it.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="rv"><p class="eyebrow"><b>07</b> — About</p><h2 class="h2" id="aboutTitle">Finance first. <em>Builder by habit.</em></h2></div>
+    </div>
+    <div class="about">
+      <div class="about-copy rv">
+        <p>I'm a finance person who learned to build the tools that finance teams need.</p>
+        <p>I grew up in Delhi and studied financial markets at Jai Hind College in Mumbai. I then spent four and a half years in finance operations: first owning month-end close at Accenture, then building the dashboards and controls that advisory teams at Ameriprise relied on every week.</p>
+        <p>At WashU Olin I'm adding forecasting, econometrics and AI to that foundation. I work on the Bunge engagement, a research panel on Indian banking regulation, an AI-learning startup, and TA roles in SQL and data visualization.</p>
+        <p>Outside work: Liverpool FC, badminton, the gym (since 2017), and long road trips with a well-made playlist.</p>
+      </div>
+      <div class="stack rv">
+        <div>
+          <h3>Education</h3>
+          <div class="edu"><span class="d">2025 – Dec 2026</span><h4>M.S. Business Analytics — Financial Technology Analytics</h4><p>Washington University in St. Louis, Olin Business School · STEM-designated. Coursework: Advanced Corporate Finance, Database Design &amp; SQL, Investment Theory, Options &amp; Futures, Fixed Income.</p></div>
+          <div class="edu"><span class="d">2017 – 2020</span><h4>B.Com — Financial Markets · GPA 4.0 / 4.0</h4><p>University of Mumbai, Jai Hind College.</p></div>
+        </div>
+        <div>
+          <h3>Toolkit</h3>
+          <dl class="skills">
+            <div><dt>FP&amp;A &amp; finance</dt><dd>Budgeting, forecasting, driver-based and three-statement modeling, variance analysis, P&amp;L bridges, scenarios, unit economics, month-end close, reconciliations.</dd></div>
+            <div><dt>Data &amp; BI</dt><dd>SQL (Spark SQL / Databricks), Python (pandas, NLP), Power BI (DAX), Tableau, Excel (VBA, Power Query), Stata.</dd></div>
+            <div><dt>AI &amp; automation</dt><dd>LLM workflows with Claude and Gemini, document extraction, n8n agents, prompt design.</dd></div>
+            <div><dt>Certification</dt><dd>Microsoft Certified: Power BI Data Analyst Associate (PL-300).</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact" aria-labelledby="contactTitle">
+  <div class="wrap">
+    <p class="eyebrow rv">08 — Contact</p>
+    <h2 class="rv" id="contactTitle">Let's talk about the <em>numbers</em> behind your next decision.</h2>
+    <div class="contact-grid rv">
+      <a href="mailto:deepakraghunath1999@gmail.com"><span class="k">Email</span><span class="v">deepakraghunath1999@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/deepak-raghunath" target="_blank" rel="noopener"><span class="k">LinkedIn ↗</span><span class="v">in/deepak-raghunath</span></a>
+      <a href="tel:+13143099932"><span class="k">Phone</span><span class="v">+1 314-309-9932</span></a>
+      <a href="Deepak_Raghunath_Resume.pdf" target="_blank" rel="noopener"><span class="k">Résumé ↓</span><span class="v">Download PDF</span></a>
+    </div>
+    <div class="foot">
+      <span>© 2026 Deepak Raghunath · St. Louis, MO</span>
+      <span>Updated September 2026 · Lab models are illustrative, not investment or tax advice.</span>
+    </div>
+  </div>
+</section>
+</main>
 <script>
-// ================================================================
-// MODAL SYSTEM
-// ================================================================
-function openModal(type) {
-  const overlay = document.getElementById('modalOverlay');
-  const content = document.getElementById('modalContent');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  if (type === 'options') content.innerHTML = buildOptionsModal();
-  else if (type === 'portfolio') content.innerHTML = buildPortfolioModal();
-  else if (type === 'rmd') content.innerHTML = buildRMDModal();
-  else if (type === 'cash') content.innerHTML = buildCashModal();
-  else if (type === 'nlp') content.innerHTML = buildNLPModal();
-}
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  try { Object.values(Chart.instances).forEach(c => c.destroy()); } catch(e) {}
-}
-function handleOverlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+/* ============================================================
+   Decision Lab engines — pure functions, no DOM.
+   ============================================================ */
+const Engines = (() => {
+  // Seeded PRNG so results are reproducible for the same inputs.
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function gaussian(rng) {
+    let u = 0, v = 0;
+    while (u === 0) u = rng();
+    while (v === 0) v = rng();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+  function quantileSorted(arr, q) {
+    const pos = (arr.length - 1) * q, lo = Math.floor(pos), hi = Math.ceil(pos);
+    return arr[lo] + (arr[hi] - arr[lo]) * (pos - lo);
+  }
 
-// ================================================================
-// SCROLL MOTION SYSTEM
-// ================================================================
-function setupScrollProgress() {
-  const bar = document.getElementById('scrollProgress');
-  if (!bar) return;
-  const update = () => {
-    const doc = document.documentElement;
-    const total = doc.scrollHeight - window.innerHeight;
-    const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
-    bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
-  };
-  update();
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-}
-
-function setupRevealOnScroll() {
-  const items = document.querySelectorAll('.reveal');
-  if (!items.length) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+  /* ---------- RetireSim: Monte Carlo with Guyton-Klinger guardrails ----------
+     Annual steps. Withdrawal taken at the start of each year, then the remaining
+     balance earns a lognormal return whose arithmetic mean = mu and sd = sigma.
+     Guardrails (Guyton & Klinger, 2006), applied from year 2 onward:
+       1. Inflation rule: skip the inflation raise after a negative-return year
+          if the current withdrawal rate is above the initial rate.
+       2. Capital preservation: if current rate > initial × (1 + band), cut the
+          withdrawal 10% (not applied in the final 15 years).
+       3. Prosperity: if current rate < initial × (1 − band), raise it 10%.
+     A path "fails" if the portfolio cannot fund the full withdrawal in a year. */
+  function retireSim(o) {
+    const { P0, rate, years, mu, sigma, infl, guard, n = 5000, seed = 7, band = 0.2 } = o;
+    const rng = mulberry32(seed);
+    const sLog = Math.sqrt(Math.log(1 + (sigma * sigma) / ((1 + mu) * (1 + mu))));
+    const mLog = Math.log(1 + mu) - 0.5 * sLog * sLog;
+    const cols = years + 1;
+    const vals = new Float64Array(n * cols);
+    let successes = 0, pathsWithCut = 0;
+    const minRealIncome = new Float64Array(n);
+    const W0 = rate * P0;
+    for (let i = 0; i < n; i++) {
+      let P = P0, W = W0, prevRet = 0, failed = false, cut = false, minReal = 1;
+      vals[i * cols] = P;
+      for (let t = 0; t < years; t++) {
+        if (t > 0) {
+          if (guard) {
+            const wrBefore = W / P;
+            if (!(prevRet < 0 && wrBefore > rate)) W *= 1 + infl;
+            const wr = W / P;
+            if (wr > rate * (1 + band) && years - t > 15) { W *= 0.9; cut = true; }
+            else if (wr < rate * (1 - band)) W *= 1.1;
+          } else {
+            W *= 1 + infl;
+          }
+        }
+        const real = W / Math.pow(1 + infl, t) / W0;
+        if (real < minReal) minReal = real;
+        if (P < W) { failed = true; P = 0; for (let k = t + 1; k < cols; k++) vals[i * cols + k] = 0; break; }
+        P -= W;
+        const g = Math.exp(mLog + sLog * gaussian(rng));
+        P *= g; prevRet = g - 1;
+        vals[i * cols + t + 1] = P;
       }
-    });
-  }, { threshold: 0.18, rootMargin: '0px 0px -30px 0px' });
-  items.forEach((el) => obs.observe(el));
-}
+      if (!failed) successes++;
+      if (cut) pathsWithCut++;
+      minRealIncome[i] = minReal;
+    }
+    const qs = [0.05, 0.25, 0.5, 0.75, 0.95];
+    const bands = qs.map(() => new Float64Array(cols));
+    const col = new Float64Array(n);
+    for (let t = 0; t < cols; t++) {
+      for (let i = 0; i < n; i++) col[i] = vals[i * cols + t];
+      col.sort();
+      qs.forEach((q, j) => { bands[j][t] = quantileSorted(col, q); });
+    }
+    const ends = new Float64Array(n);
+    for (let i = 0; i < n; i++) ends[i] = vals[i * cols + years];
+    ends.sort();
+    const mri = Float64Array.from(minRealIncome).sort();
+    const samples = [];
+    for (let i = 0; i < Math.min(n, 90); i++) samples.push(Array.from(vals.subarray(i * cols, (i + 1) * cols)));
+    return {
+      success: successes / n,
+      pathsWithCut: pathsWithCut / n,
+      medianEnd: quantileSorted(ends, 0.5),
+      p10End: quantileSorted(ends, 0.1),
+      p90End: quantileSorted(ends, 0.9),
+      medianMinRealIncome: quantileSorted(mri, 0.5),
+      p10MinRealIncome: quantileSorted(mri, 0.1),
+      bands: { p5: bands[0], p25: bands[1], p50: bands[2], p75: bands[3], p95: bands[4] },
+      samples, years, n, W0
+    };
+  }
 
-function setupParallaxScroll() {
-  const els = [...document.querySelectorAll('[data-parallax]')];
-  if (!els.length) return;
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
-  let ticking = false;
-  const update = () => {
-    const y = window.scrollY;
-    els.forEach((el) => {
-      const speed = parseFloat(el.dataset.parallax || '0.1');
-      el.style.transform = `translate3d(0, ${y * speed * -0.18}px, 0)`;
+  /* ---------- Black-Scholes (European, no dividends) ---------- */
+  function normPdf(x) { return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI); }
+  // W. J. Cody-style erf via Abramowitz–Stegun 7.1.26 has 1.5e-7 error; use a higher-precision series/continued fraction.
+  function normCdf(x) {
+    // Hart (1968) / West (2005) double-precision algorithm
+    const z = Math.abs(x);
+    let c;
+    if (z > 37) c = 0;
+    else {
+      const e = Math.exp(-z * z / 2);
+      if (z < 7.07106781186547) {
+        let n = 3.52624965998911e-02 * z + 0.700383064443688;
+        n = n * z + 6.37396220353165; n = n * z + 33.912866078383; n = n * z + 112.079291497871;
+        n = n * z + 221.213596169931; n = n * z + 220.206867912376;
+        let d = 8.83883476483184e-02 * z + 1.75566716318264;
+        d = d * z + 16.064177579207; d = d * z + 86.7807322029461; d = d * z + 296.564248779674;
+        d = d * z + 637.333633378831; d = d * z + 793.826512519948; d = d * z + 440.413735824752;
+        c = e * n / d;
+      } else {
+        let b = z + 0.65; b = z + 4 / b; b = z + 3 / b; b = z + 2 / b; b = z + 1 / b;
+        c = e / b / 2.506628274631;
+      }
+    }
+    return x > 0 ? 1 - c : c;
+  }
+  function blackScholes(S, K, T, r, v, type) {
+    const sq = Math.sqrt(T);
+    const d1 = (Math.log(S / K) + (r + 0.5 * v * v) * T) / (v * sq);
+    const d2 = d1 - v * sq;
+    const disc = Math.exp(-r * T);
+    const call = type === 'call';
+    const price = call ? S * normCdf(d1) - K * disc * normCdf(d2) : K * disc * normCdf(-d2) - S * normCdf(-d1);
+    const delta = call ? normCdf(d1) : normCdf(d1) - 1;
+    const gamma = normPdf(d1) / (S * v * sq);
+    const vega = S * normPdf(d1) * sq / 100;                       // per 1 vol point
+    const theta = (-(S * normPdf(d1) * v) / (2 * sq) - (call ? 1 : -1) * r * K * disc * normCdf(call ? d2 : -d2)) / 365; // per calendar day
+    const rho = (call ? 1 : -1) * K * T * disc * normCdf(call ? d2 : -d2) / 100;   // per 1 rate point
+    return { price, delta, gamma, vega, theta, rho, d1, d2 };
+  }
+
+  /* ---------- Mean-variance frontier (long-only, sampled) ---------- */
+  function frontier(assets, corr, rf, n = 6000, seed = 11) {
+    const k = assets.length, rng = mulberry32(seed);
+    const cov = assets.map((a, i) => assets.map((b, j) => corr[i][j] * a.vol * b.vol));
+    const pts = [];
+    const stats = (w) => {
+      let ret = 0, varp = 0;
+      for (let i = 0; i < k; i++) { ret += w[i] * assets[i].ret; for (let j = 0; j < k; j++) varp += w[i] * w[j] * cov[i][j]; }
+      const vol = Math.sqrt(Math.max(varp, 0));
+      return { w, ret, vol, sharpe: (ret - rf) / vol };
+    };
+    // Corners (100% in each asset) plus uniform samples on the simplex.
+    for (let i = 0; i < k; i++) { const w = new Array(k).fill(0); w[i] = 1; pts.push(stats(w)); }
+    for (let s = 0; s < n; s++) {
+      let w = []; let t = 0;
+      for (let i = 0; i < k; i++) { const e = -Math.log(1 - rng()); w.push(e); t += e; }
+      w = w.map((x) => x / t);
+      pts.push(stats(w));
+    }
+    let best = pts[0], minv = pts[0];
+    for (const p of pts) { if (p.sharpe > best.sharpe) best = p; if (p.vol < minv.vol) minv = p; }
+    // Efficient frontier: upper envelope of return for each volatility bucket, right of min-variance.
+    const sorted = pts.filter((p) => p.ret >= minv.ret).sort((a, b) => a.vol - b.vol);
+    const env = []; let top = -Infinity;
+    for (const p of sorted) if (p.ret > top + 1e-6) { env.push(p); top = p.ret; }
+    return { pts, best, minv, envelope: env, cov };
+  }
+
+  /* ---------- RMD exception monitor ---------- */
+  // IRS Uniform Lifetime Table (Pub. 590-B, effective 2022)
+  const ULT = { 72: 27.4, 73: 26.5, 74: 25.5, 75: 24.6, 76: 23.7, 77: 22.9, 78: 22.0, 79: 21.1, 80: 20.2, 81: 19.4, 82: 18.5, 83: 17.7, 84: 16.8, 85: 16.0, 86: 15.2, 87: 14.4, 88: 13.7, 89: 12.9, 90: 12.2, 91: 11.5, 92: 10.8, 93: 10.1, 94: 9.5, 95: 8.9 };
+  // SECURE 2.0 applicable age: born 1951–1959 → 73; 1960+ → 75; earlier cohorts already in payout.
+  function rmdStartAge(birthYear) { return birthYear >= 1960 ? 75 : birthYear >= 1951 ? 73 : 72; }
+  function schedule(kind, amt, year) {
+    const d = [];
+    if (kind === 'monthly') for (let m = 0; m < 12; m++) d.push({ date: new Date(year, m, 15), amt });
+    if (kind === 'quarterly') [2, 5, 8, 11].forEach((m) => d.push({ date: new Date(year, m, 15), amt }));
+    if (kind === 'december') d.push({ date: new Date(year, 11, 10), amt });
+    if (kind === 'march') d.push({ date: new Date(year, 2, 20), amt });
+    return d;
+  }
+  function rmdReview(accounts, asOf, year = 2026) {
+    const yearEnd = new Date(year, 11, 31, 23, 59);
+    const rows = accounts.map((a) => {
+      const age = year - a.birth;
+      const start = rmdStartAge(a.birth);
+      const sched = schedule(a.plan, a.amt, year);
+      const ytd = sched.filter((x) => x.date <= asOf).reduce((s, x) => s + x.amt, 0);
+      const planned = sched.filter((x) => x.date > asOf && x.date <= yearEnd).reduce((s, x) => s + x.amt, 0);
+      if (age < start) return { ...a, age, start, required: 0, ytd, planned, shortfall: 0, status: 'not-required', note: `RMDs begin at ${start} (${a.birth + start})` };
+      const required = a.bal / ULT[Math.min(age, 95)];
+      const shortfall = Math.max(0, required - ytd);
+      let status, note;
+      if (age === start) { status = ytd >= required ? 'satisfied' : 'first-year'; note = ytd >= required ? 'First RMD taken' : `First RMD — may defer to Apr 1, ${year + 1}`; }
+      else if (ytd >= required) { status = 'satisfied'; note = 'Requirement met'; }
+      else if (asOf > yearEnd) { status = 'missed'; note = 'Missed Dec 31 — 25% excise (10% if corrected timely)'; }
+      else if (ytd + planned >= required) { status = 'on-track'; note = 'Scheduled distributions cover it'; }
+      else {
+        const monthsLeft = (yearEnd - asOf) / (1000 * 60 * 60 * 24 * 30.44);
+        status = monthsLeft <= 3 ? 'at-risk' : 'needs-plan';
+        note = monthsLeft <= 3 ? `Shortfall with ${Math.max(0, Math.ceil(monthsLeft * 30.44))} days left` : 'Schedule does not cover RMD';
+      }
+      return { ...a, age, start, required, ytd, planned, shortfall, status, note };
     });
+    const exceptions = rows.filter((r) => ['needs-plan', 'at-risk', 'missed'].includes(r.status));
+    const exposure = rows.filter((r) => r.status === 'at-risk' || r.status === 'missed').reduce((s, r) => s + r.shortfall * 0.25, 0);
+    return { rows, exceptions, exposure };
+  }
+
+  return { mulberry32, retireSim, blackScholes, normCdf, frontier, rmdReview, rmdStartAge, ULT };
+})();
+
+/* ============================================================
+   UI layer — charts, lab controllers, navigation, motion.
+   ============================================================ */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const tok = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const fmtMoney = (v) => {
+    const a = Math.abs(v);
+    if (a >= 1e6) return '$' + (v / 1e6).toFixed(a >= 1e7 ? 1 : 2) + 'M';
+    if (a >= 1e3) return '$' + Math.round(v / 1e3) + 'K';
+    return '$' + Math.round(v);
+  };
+  const fmtUSD = (v) => '$' + Math.round(v).toLocaleString('en-US');
+  const pct = (v, d = 1) => (v * 100).toFixed(d) + '%';
+  const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+  /* ---------------- Canvas helpers ---------------- */
+  function prep(cv) {
+    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
+    if (cv.width !== w * dpr || cv.height !== h * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+    const ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    return { ctx, w, h };
+  }
+  function niceTicks(min, max, count = 5) {
+    const span = max - min || 1;
+    const step0 = span / count;
+    const mag = Math.pow(10, Math.floor(Math.log10(step0)));
+    const norm = step0 / mag;
+    const step = (norm < 1.5 ? 1 : norm < 3 ? 2 : norm < 7 ? 5 : 10) * mag;
+    const out = [];
+    for (let v = Math.ceil(min / step) * step; v <= max + step * 1e-6; v += step) out.push(+v.toFixed(10));
+    return out;
+  }
+  function axes(ctx, box, xs, ys, xt, yt, fx, fy, labels = {}) {
+    ctx.save();
+    ctx.font = `11px ${tok('--mono') || 'monospace'}`;
+    ctx.fillStyle = tok('--muted');
+    ctx.strokeStyle = tok('--rule');
+    ctx.lineWidth = 1;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'right';
+    yt.forEach((v) => {
+      const y = Math.round(ys(v)) + 0.5;
+      ctx.beginPath(); ctx.moveTo(box.l, y); ctx.lineTo(box.r, y); ctx.stroke();
+      ctx.fillText(fy(v), box.l - 8, y);
+    });
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    xt.forEach((v) => {
+      const x = xs(v), label = fx(v), half = ctx.measureText(label).width / 2;
+      ctx.textAlign = x + half > box.r + 4 ? 'right' : x - half < box.l - 30 ? 'left' : 'center';
+      ctx.fillText(label, ctx.textAlign === 'right' ? box.r + 4 : x, box.b + 8);
+    });
+    ctx.strokeStyle = tok('--rule-strong');
+    ctx.beginPath(); ctx.moveTo(box.l, Math.round(box.b) + 0.5); ctx.lineTo(box.r, Math.round(box.b) + 0.5); ctx.stroke();
+    if (labels.x) { ctx.textAlign = 'right'; ctx.fillText(labels.x, box.r, box.b + 24); }
+    if (labels.y) { ctx.textAlign = 'left'; ctx.textBaseline = 'bottom'; ctx.fillText(labels.y, box.l, box.t - 8); }
+    ctx.restore();
+  }
+  const lin = (d0, d1, r0, r1) => (v) => r0 + ((v - d0) / (d1 - d0 || 1)) * (r1 - r0);
+
+  /* ---------------- Fan chart (hero + lab) ---------------- */
+  function drawFan(cv, res, opt = {}) {
+    const { ctx, w, h } = prep(cv);
+    const compact = opt.compact;
+    const box = { l: compact ? 52 : 64, r: w - (compact ? 14 : 12), t: compact ? 18 : 28, b: h - (compact ? 30 : 44) };
+    const Y = res.years;
+    let ymax = 0; for (let t = 0; t <= Y; t++) ymax = Math.max(ymax, res.bands.p95[t]);
+    ymax = Math.max(ymax, res.bands.p50[0] * 1.2);
+    const yt = niceTicks(0, ymax, compact ? 4 : 5);
+    ymax = yt[yt.length - 1];
+    const xs = lin(0, Y, box.l, box.r), ys = lin(0, ymax, box.b, box.t);
+    const xt = niceTicks(0, Y, compact ? 3 : 6).filter((v) => v <= Y);
+    axes(ctx, box, xs, ys, xt, yt, (v) => (v === 0 ? 'Yr 0' : 'Yr ' + v), fmtMoney, compact ? {} : { x: 'Years into retirement', y: 'Portfolio value (nominal)' });
+
+    const prog = opt.progress == null ? 1 : opt.progress;       // sample path reveal 0..1
+    const bandA = opt.bandAlpha == null ? 1 : opt.bandAlpha;    // band opacity 0..1
+    const medP = opt.median == null ? 1 : opt.median;           // median draw 0..1
+    ctx.save();
+    ctx.beginPath(); ctx.rect(box.l, box.t - 2, box.r - box.l, box.b - box.t + 2); ctx.clip();
+    // sample paths
+    const xEnd = prog * Y;
+    ctx.strokeStyle = tok('--path'); ctx.lineWidth = 1;
+    const nS = compact ? res.samples.length : Math.min(40, res.samples.length);
+    for (let i = 0; i < nS; i++) {
+      const p = res.samples[i];
+      ctx.beginPath();
+      for (let t = 0; t <= Y; t++) {
+        if (t > xEnd) { const t0 = t - 1, f = xEnd - t0; ctx.lineTo(xs(xEnd), ys(p[t0] + (p[t] - p[t0]) * f)); break; }
+        const x = xs(t), y = ys(p[t]);
+        t === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    // bands
+    if (bandA > 0) {
+      ctx.globalAlpha = bandA;
+      const band = (lo, hi, col) => {
+        ctx.fillStyle = col; ctx.beginPath();
+        for (let t = 0; t <= Y; t++) ctx.lineTo(xs(t), ys(hi[t]));
+        for (let t = Y; t >= 0; t--) ctx.lineTo(xs(t), ys(lo[t]));
+        ctx.closePath(); ctx.fill();
+      };
+      band(res.bands.p5, res.bands.p95, tok('--band-outer'));
+      band(res.bands.p25, res.bands.p75, tok('--band-inner'));
+      ctx.globalAlpha = 1;
+    }
+    // median
+    if (medP > 0) {
+      ctx.strokeStyle = tok('--accent'); ctx.lineWidth = 2.25; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      const mEnd = medP * Y;
+      for (let t = 0; t <= Y; t++) {
+        if (t > mEnd) { const t0 = t - 1, f = mEnd - t0; ctx.lineTo(xs(mEnd), ys(res.bands.p50[t0] + (res.bands.p50[t] - res.bands.p50[t0]) * f)); break; }
+        t === 0 ? ctx.moveTo(xs(t), ys(res.bands.p50[t])) : ctx.lineTo(xs(t), ys(res.bands.p50[t]));
+      }
+      ctx.stroke();
+      if (medP >= 1) {
+        const x = xs(Y), y = ys(res.bands.p50[Y]);
+        ctx.fillStyle = tok('--accent'); ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    ctx.restore();
+    if (medP >= 1 && !compact) {
+      ctx.save();
+      ctx.font = `500 12px ${tok('--mono')}`; ctx.fillStyle = tok('--accent'); ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+      const y = Math.max(box.t + 14, ys(res.bands.p50[Y]) - 8);
+      ctx.fillText('Median ' + fmtMoney(res.bands.p50[Y]), box.r - 6, y);
+      ctx.restore();
+    }
+  }
+
+  /* ---------------- Hero ---------------- */
+  const heroCv = $('#heroChart');
+  const heroParams = { P0: 1e6, rate: 0.05, years: 30, mu: 0.07, sigma: 0.15, infl: 0.025, guard: true, n: 5000, seed: 7 };
+  let heroRes = null, heroDone = false;
+  function runHero() {
+    heroRes = Engines.retireSim(heroParams);
+    const fixed = Engines.retireSim({ ...heroParams, guard: false });
+    $('#hSuccess').textContent = pct(heroRes.success, 0);
+    $('#hMedian').textContent = fmtMoney(heroRes.medianEnd);
+    $('#hFixed').textContent = pct(fixed.success, 0);
+    heroCv.setAttribute('aria-label', `Fan chart of 5,000 simulated 30-year retirement paths. With guardrails ${pct(heroRes.success, 0)} of paths last 30 years versus ${pct(fixed.success, 0)} with fixed spending; median ending value ${fmtMoney(heroRes.medianEnd)}.`);
+    if (reduceMQ.matches) { drawFan(heroCv, heroRes, { compact: true }); heroDone = true; return; }
+    const t0 = performance.now(), D1 = 1700, D2 = 700, D3 = 800;
+    const ease = (x) => 1 - Math.pow(1 - x, 3);
+    const frame = (now) => {
+      const e = now - t0;
+      const progress = ease(Math.min(1, e / D1));
+      const bandAlpha = ease(Math.min(1, Math.max(0, (e - D1 * 0.7) / D2)));
+      const median = ease(Math.min(1, Math.max(0, (e - D1 * 0.8) / D3)));
+      drawFan(heroCv, heroRes, { compact: true, progress, bandAlpha, median });
+      if (e < D1 * 0.8 + D3) requestAnimationFrame(frame); else heroDone = true;
+    };
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------------- Slider helpers ---------------- */
+  function bindRange(id, fmt, onInput) {
+    const el = $('#' + id), out = $('#' + id + '_o');
+    const paint = () => {
+      const f = ((el.value - el.min) / (el.max - el.min)) * 100;
+      el.style.setProperty('--fill', f + '%');
+      if (out) out.textContent = fmt(+el.value);
+    };
+    el.addEventListener('input', () => { paint(); onInput(); });
+    paint();
+    return () => +el.value;
+  }
+  function bindSeg(container, attr, onChange) {
+    const btns = $$('button[data-' + attr + ']', container);
+    btns.forEach((b) => b.addEventListener('click', () => {
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      onChange(b.dataset[attr]);
+    }));
+  }
+
+  /* ---------------- RetireSim lab ---------------- */
+  const rs = {};
+  let rsGuard = true, rsRes = null;
+  const rsRun = () => {
+    const p = { P0: rs.P0(), rate: rs.rate() / 100, years: rs.years(), mu: rs.mu() / 100, sigma: rs.sigma() / 100, infl: rs.infl() / 100, n: 5000, seed: 7 };
+    rsRes = Engines.retireSim({ ...p, guard: rsGuard });
+    const alt = Engines.retireSim({ ...p, guard: !rsGuard });
+    const r = rsRes;
+    const k1 = $('#rs_k1');
+    k1.textContent = pct(r.success, 1);
+    k1.className = 'v ' + (r.success >= 0.85 ? 'pos' : r.success >= 0.7 ? 'warn' : 'neg');
+    $('#rs_k1d').textContent = (rsGuard ? 'fixed spending: ' : 'with guardrails: ') + pct(alt.success, 1);
+    $('#rs_k2').textContent = fmtMoney(r.medianEnd);
+    $('#rs_k3').textContent = fmtMoney(r.p10End);
+    $('#rs_k4').textContent = pct(r.medianMinRealIncome, 0);
+    $('#rs_k4d').textContent = rsGuard ? 'median path, vs year 1' : 'fixed by design';
+    drawFan($('#rs_chart'), r);
+    const Y = p.years;
+    let read;
+    if (rsGuard) {
+      read = `<strong>${pct(r.success, 0)}</strong> of 5,000 paths fund the full ${Y} years with guardrails, compared with <strong>${pct(alt.success, 0)}</strong> when spending never adjusts. The cost is flexibility. ${pct(r.pathsWithCut, 0)} of paths take at least one 10% cut. On the median path the lowest year's real income is ${pct(r.medianMinRealIncome, 0)} of year 1; on a bad-luck (10th percentile) path it drops to ${pct(r.p10MinRealIncome, 0)}.`;
+    } else {
+      read = `With fixed inflation-adjusted spending of ${fmtUSD(r.W0)} a year, income stays level until the money runs out. That happens in <strong>${pct(1 - r.success, 0)}</strong> of paths. Guardrails would raise the success rate to <strong>${pct(alt.success, 0)}</strong> in exchange for occasional spending cuts.`;
+    }
+    $('#rs_read').innerHTML = read;
+    $('#rs_chart').setAttribute('aria-label', `Fan chart: ${pct(r.success, 0)} success over ${Y} years; median ending value ${fmtMoney(r.medianEnd)}.`);
+    let rows = '<thead><tr><th scope="col">Year</th><th scope="col">5th</th><th scope="col">25th</th><th scope="col">Median</th><th scope="col">75th</th><th scope="col">95th</th></tr></thead><tbody>';
+    for (let t = 0; t <= Y; t += 5) rows += `<tr><td>${t}</td><td>${fmtMoney(r.bands.p5[t])}</td><td>${fmtMoney(r.bands.p25[t])}</td><td>${fmtMoney(r.bands.p50[t])}</td><td>${fmtMoney(r.bands.p75[t])}</td><td>${fmtMoney(r.bands.p95[t])}</td></tr>`;
+    if (Y % 5) rows += `<tr><td>${Y}</td><td>${fmtMoney(r.bands.p5[Y])}</td><td>${fmtMoney(r.bands.p25[Y])}</td><td>${fmtMoney(r.bands.p50[Y])}</td><td>${fmtMoney(r.bands.p75[Y])}</td><td>${fmtMoney(r.bands.p95[Y])}</td></tr>`;
+    $('#rs_table').innerHTML = rows + '</tbody>';
+  };
+  const rsRunD = debounce(rsRun, 40);
+  rs.P0 = bindRange('rs_P0', fmtMoney, rsRunD);
+  rs.rate = bindRange('rs_rate', (v) => v.toFixed(1) + '%', rsRunD);
+  rs.years = bindRange('rs_years', (v) => v + ' yrs', rsRunD);
+  rs.mu = bindRange('rs_mu', (v) => v.toFixed(1) + '%', rsRunD);
+  rs.sigma = bindRange('rs_sigma', (v) => v + '%', rsRunD);
+  rs.infl = bindRange('rs_infl', (v) => v.toFixed(2) + '%', rsRunD);
+  bindSeg($('#panel-retire'), 'guard', (v) => { rsGuard = v === '1'; rsRun(); });
+
+  /* ---------------- RMD monitor ---------------- */
+  const ACCTS = [
+    { id: 'A-1042', type: 'IRA', birth: 1950, bal: 612000, plan: 'monthly', amt: 2400 },
+    { id: 'A-1187', type: '401(k)', birth: 1953, bal: 385000, plan: 'none', amt: 0 },
+    { id: 'A-1203', type: 'IRA', birth: 1948, bal: 940000, plan: 'december', amt: 45000 },
+    { id: 'A-1266', type: 'IRA', birth: 1955, bal: 300000, plan: 'none', amt: 0 },
+    { id: 'A-1311', type: '403(b)', birth: 1962, bal: 510000, plan: 'none', amt: 0 },
+    { id: 'A-1358', type: '403(b)', birth: 1945, bal: 275000, plan: 'quarterly', amt: 3000 },
+    { id: 'A-1402', type: 'IRA', birth: 1952, bal: 520000, plan: 'none', amt: 0 },
+    { id: 'A-1477', type: 'IRA', birth: 1949, bal: 1150000, plan: 'monthly', amt: 4500 },
+    { id: 'A-1520', type: 'IRA', birth: 1951, bal: 208000, plan: 'march', amt: 9000 },
+    { id: 'A-1563', type: 'IRA', birth: 1944, bal: 460000, plan: 'quarterly', amt: 6500 }
+  ];
+  const ASOF = [new Date(2026, 1, 1), new Date(2026, 4, 1), new Date(2026, 7, 1), new Date(2026, 9, 15), new Date(2026, 11, 15), new Date(2027, 0, 5)];
+  const fmtDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const BADGE = {
+    'missed': ['b-bad', 'Missed', 0], 'at-risk': ['b-bad', 'At risk', 1], 'needs-plan': ['b-warn', 'Needs plan', 2],
+    'first-year': ['b-info', 'First year', 3], 'on-track': ['b-ok', 'On track', 4], 'satisfied': ['b-ok', 'Met', 5], 'not-required': ['b-info', 'Not yet', 6]
+  };
+  let rmdFilter = 'all';
+  const rmdAsOf = bindRange('rmd_asof', (v) => fmtDate(ASOF[v]), () => rmdRun());
+  bindSeg($('#panel-rmd'), 'filter', (v) => { rmdFilter = v; rmdRun(); });
+  function rmdRun() {
+    const asOf = ASOF[rmdAsOf()];
+    const R = Engines.rmdReview(ACCTS, asOf);
+    const due = R.rows.filter((r) => r.status !== 'not-required');
+    const ok = R.rows.filter((r) => ['satisfied', 'on-track', 'first-year'].includes(r.status));
+    $('#rmd_k1').textContent = due.length;
+    $('#rmd_k2').textContent = ok.length;
+    const k3 = $('#rmd_k3'); k3.textContent = R.exceptions.length; k3.className = 'v ' + (R.exceptions.length ? (R.exceptions.some((r) => r.status !== 'needs-plan') ? 'neg' : 'warn') : 'pos');
+    const k4 = $('#rmd_k4'); k4.textContent = fmtUSD(R.exposure); k4.className = 'v ' + (R.exposure > 0 ? 'neg' : 'pos');
+    const sorted = R.rows.slice().sort((a, b) => BADGE[a.status][2] - BADGE[b.status][2]);
+    const shown = rmdFilter === 'ex' ? sorted.filter((r) => R.exceptions.includes(r)) : sorted;
+    let html = '<thead><tr><th scope="col">Account</th><th scope="col" style="text-align:left">Status</th><th scope="col">RMD 2026</th><th scope="col">Taken</th><th scope="col">Scheduled</th><th scope="col">Age</th><th scope="col" style="text-align:left">Why</th></tr></thead><tbody>';
+    if (!shown.length) html += '<tr><td colspan="7" style="text-align:center;font-family:var(--sans);color:var(--muted);padding:22px">No exceptions on this date. Every required distribution is met or scheduled.</td></tr>';
+    shown.forEach((r) => {
+      const [cls, lbl] = BADGE[r.status];
+      html += `<tr><td>${r.id} <span class="muted" style="font-size:.78rem">${r.type}</span></td><td style="text-align:left"><span class="badge ${cls}">${lbl}</span></td><td>${r.required ? fmtUSD(r.required) : '—'}</td><td>${fmtUSD(r.ytd)}</td><td>${r.planned ? fmtUSD(r.planned) : '—'}</td><td>${r.age}</td><td class="note">${r.note}</td></tr>`;
+    });
+    $('#rmd_table').innerHTML = html + '</tbody>';
+    const ex = R.exceptions;
+    const short = ex.reduce((s, r) => s + r.shortfall, 0);
+    let read;
+    if (!ex.length) read = `<strong>As of ${fmtDate(asOf)}:</strong> no exceptions. Every account with a 2026 requirement has either met it or has enough scheduled distributions to cover it. First-year accounts are marked for their April 1, 2027 deadline.`;
+    else if (asOf.getFullYear() > 2026) read = `<strong>After the December 31 deadline:</strong> ${ex.map((r) => r.id).join(' and ')} missed ${fmtUSD(short)} in required distributions. Uncorrected, that's a <strong>${fmtUSD(R.exposure)}</strong> excise tax. Flagging these earlier is the point of the monitor.`;
+    else read = `<strong>As of ${fmtDate(asOf)}:</strong> ${ex.length} account${ex.length > 1 ? 's need' : ' needs'} an advisor action before December 31: ${ex.map((r) => `${r.id} (${fmtUSD(r.shortfall)} short${r.planned ? '' : ', nothing scheduled'})`).join('; ')}. ${R.exposure > 0 ? `Excise exposure if not fixed: <strong>${fmtUSD(R.exposure)}</strong>.` : 'There is still time to schedule these distributions.'}`;
+    $('#rmd_read').innerHTML = read;
+  }
+
+  /* ---------------- Black-Scholes ---------------- */
+  let bsType = 'call';
+  const bs = {};
+  const bsRun = () => {
+    const S = bs.S(), K = bs.K(), T = bs.T(), r = bs.r() / 100, v = bs.v() / 100;
+    const o = Engines.blackScholes(S, K, T, r, v, bsType);
+    const intr = Math.max(0, bsType === 'call' ? S - K : K - S);
+    $('#bs_price').textContent = '$' + o.price.toFixed(2);
+    $('#bs_split').textContent = `$${intr.toFixed(2)} intrinsic + $${(o.price - intr).toFixed(2)} time`;
+    $('#bs_delta').textContent = o.delta.toFixed(3);
+    $('#bs_gamma').textContent = o.gamma.toFixed(4);
+    $('#bs_vega').textContent = '$' + o.vega.toFixed(3);
+    const th = $('#bs_theta'); th.textContent = (o.theta < 0 ? '−$' : '$') + Math.abs(o.theta).toFixed(3); th.className = 'v ' + (o.theta < 0 ? 'neg' : 'pos');
+    $('#bs_rho').textContent = (o.rho < 0 ? '−$' : '$') + Math.abs(o.rho).toFixed(3);
+    const atm = Math.abs(S - K) / K < 0.02;
+    const itm = bsType === 'call' ? S > K : S < K;
+    const m = $('#bs_money'); m.textContent = atm ? 'ATM' : itm ? 'ITM' : 'OTM'; m.className = 'v ' + (atm ? 'warn' : itm ? 'pos' : 'neg');
+    $('#bs_moneyd').textContent = atm ? 'at the money' : itm ? 'in the money' : 'out of the money';
+    $('#bs_d').textContent = `${o.d1.toFixed(2)} / ${o.d2.toFixed(2)}`;
+    // chart
+    const cv = $('#bs_chart');
+    const { ctx, w, h } = prep(cv);
+    const box = { l: 56, r: w - 12, t: 28, b: h - 44 };
+    const lo = Math.max(1, Math.min(S, K) * 0.5), hi = Math.max(S, K) * 1.5;
+    const N = 120, xsV = [], val = [], pay = [];
+    for (let i = 0; i <= N; i++) {
+      const s = lo + ((hi - lo) * i) / N; xsV.push(s);
+      val.push(Engines.blackScholes(s, K, T, r, v, bsType).price);
+      pay.push(Math.max(0, bsType === 'call' ? s - K : K - s));
+    }
+    let ymax = Math.max(...val, ...pay) * 1.05;
+    const yt = niceTicks(0, ymax, 5); ymax = yt[yt.length - 1];
+    const xs = lin(lo, hi, box.l, box.r), ys = lin(0, ymax, box.b, box.t);
+    axes(ctx, box, xs, ys, niceTicks(lo, hi, 6).filter((x) => x >= lo && x <= hi), yt, (x) => '$' + Math.round(x), (y) => '$' + (y >= 100 ? Math.round(y) : y.toFixed(y < 10 ? 1 : 0)), { x: 'Spot price', y: 'Option value' });
+    ctx.save(); ctx.beginPath(); ctx.rect(box.l, box.t - 4, box.r - box.l, box.b - box.t + 4); ctx.clip();
+    // strike line
+    ctx.strokeStyle = tok('--rule-strong'); ctx.setLineDash([3, 4]); ctx.beginPath(); ctx.moveTo(xs(K), box.t); ctx.lineTo(xs(K), box.b); ctx.stroke(); ctx.setLineDash([]);
+    // time value fill
+    ctx.fillStyle = tok('--accent-soft'); ctx.beginPath();
+    xsV.forEach((s, i) => ctx.lineTo(xs(s), ys(val[i])));
+    for (let i = N; i >= 0; i--) ctx.lineTo(xs(xsV[i]), ys(pay[i]));
+    ctx.closePath(); ctx.fill();
+    // payoff
+    ctx.strokeStyle = tok('--ink'); ctx.globalAlpha = 0.55; ctx.lineWidth = 1.5; ctx.beginPath();
+    xsV.forEach((s, i) => (i ? ctx.lineTo(xs(s), ys(pay[i])) : ctx.moveTo(xs(s), ys(pay[i])))); ctx.stroke(); ctx.globalAlpha = 1;
+    // value
+    ctx.strokeStyle = tok('--accent'); ctx.lineWidth = 2.25; ctx.beginPath();
+    xsV.forEach((s, i) => (i ? ctx.lineTo(xs(s), ys(val[i])) : ctx.moveTo(xs(s), ys(val[i])))); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = tok('--accent'); ctx.beginPath(); ctx.arc(xs(S), ys(o.price), 5, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = tok('--card'); ctx.lineWidth = 2; ctx.stroke();
+    ctx.font = `11px ${tok('--mono')}`; ctx.fillStyle = tok('--muted'); ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('K = $' + K, Math.min(xs(K) + 6, box.r - 60), box.t + 2);
+    cv.setAttribute('aria-label', `Option value versus spot price. At spot $${S} the ${bsType} is worth $${o.price.toFixed(2)}.`);
+    $('#bs_read').innerHTML = `A ${bsType} with a $${K} strike and ${T.toFixed(2)} years to expiry is worth <strong>$${o.price.toFixed(2)}</strong> at a spot price of $${S}. That is $${intr.toFixed(2)} of intrinsic value plus $${(o.price - intr).toFixed(2)} of time value (the shaded gap). A delta of ${o.delta.toFixed(2)} means the option ${o.delta >= 0 ? 'gains' : 'loses'} about $${Math.abs(o.delta).toFixed(2)} for each $1 rise in the stock. Time decay costs about $${Math.abs(o.theta).toFixed(3)} a day, and each extra point of volatility adds $${o.vega.toFixed(3)}.`;
+  };
+  bs.S = bindRange('bs_S', (v) => '$' + v, bsRun);
+  bs.K = bindRange('bs_K', (v) => '$' + v, bsRun);
+  bs.T = bindRange('bs_T', (v) => v.toFixed(2) + ' yrs', bsRun);
+  bs.r = bindRange('bs_r', (v) => v.toFixed(2) + '%', bsRun);
+  bs.v = bindRange('bs_v', (v) => v + '%', bsRun);
+  bindSeg($('#panel-bs'), 'type', (v) => { bsType = v; bsRun(); });
+
+  /* ---------------- Frontier ---------------- */
+  const PF_NAMES = ['US equity', "Int'l equity", 'US bonds', 'REITs'];
+  const PF_SHORT = ['US eq', 'Intl eq', 'Bonds', 'REITs'];
+  const PF_VOL = [0.16, 0.18, 0.06, 0.19];
+  const PF_COL = ['#2F3A4A', '#C2410C', '#1D7348', '#A16207'];
+  const pf = {};
+  const pfRun = () => {
+    const assets = PF_NAMES.map((name, i) => ({ name, ret: pf['r' + i]() / 100, vol: PF_VOL[i] }));
+    const c = pf.c();
+    const C = [[1, 0.8, c, 0.65], [0.8, 1, c, 0.6], [c, c, 1, 0.25], [0.65, 0.6, 0.25, 1]];
+    const rf = pf.rf() / 100;
+    const F = Engines.frontier(assets, C, rf);
+    $('#pf_k1').textContent = pct(F.best.ret, 2);
+    $('#pf_k2').textContent = pct(F.best.vol, 2);
+    $('#pf_k3').textContent = F.best.sharpe.toFixed(3);
+    $('#pf_k4').textContent = pct(F.minv.vol, 2);
+    $('#pf_alloc').innerHTML = F.best.w.map((wi, i) => `<div style="flex-basis:${(wi * 100).toFixed(2)}%;background:${PF_COL[i]}" title="${PF_NAMES[i]} ${pct(wi, 1)}">${wi > 0.09 ? PF_SHORT[i] + ' ' + pct(wi, 0) : ''}</div>`).join('');
+    $('#pf_alloc').setAttribute('aria-label', 'Max-Sharpe allocation: ' + F.best.w.map((wi, i) => `${PF_NAMES[i]} ${pct(wi, 1)}`).join(', '));
+    // chart
+    const cv = $('#pf_chart');
+    const { ctx, w, h } = prep(cv);
+    const box = { l: 56, r: w - 12, t: 28, b: h - 44 };
+    const vmax = Math.max(...F.pts.map((p) => p.vol)) * 1.08;
+    const rmin = Math.min(rf, ...F.pts.map((p) => p.ret)), rmax = Math.max(...F.pts.map((p) => p.ret));
+    const yt = niceTicks(Math.max(0, rmin - 0.005), rmax + 0.005, 5);
+    const xt = niceTicks(0, vmax, 5);
+    const xs = lin(0, xt[xt.length - 1], box.l, box.r), ys = lin(yt[0], yt[yt.length - 1], box.b, box.t);
+    axes(ctx, box, xs, ys, xt, yt, (v) => (v * 100).toFixed(0) + '%', (v) => (v * 100).toFixed(1) + '%', { x: 'Volatility', y: 'Expected return' });
+    ctx.save(); ctx.beginPath(); ctx.rect(box.l, box.t - 6, box.r - box.l, box.b - box.t + 6); ctx.clip();
+    ctx.fillStyle = tok('--path');
+    const dots = F.pts.length > 2500 ? F.pts.filter((_, i) => i % 2 === 0 || i < 4) : F.pts;
+    dots.forEach((p) => { ctx.fillRect(xs(p.vol) - 1.25, ys(p.ret) - 1.25, 2.5, 2.5); });
+    // CML
+    ctx.strokeStyle = tok('--accent'); ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+    const xr = xt[xt.length - 1];
+    ctx.beginPath(); ctx.moveTo(xs(0), ys(rf)); ctx.lineTo(xs(xr), ys(rf + F.best.sharpe * xr)); ctx.stroke(); ctx.setLineDash([]);
+    // envelope
+    ctx.strokeStyle = tok('--ink'); ctx.lineWidth = 2; ctx.beginPath();
+    F.envelope.forEach((p, i) => (i ? ctx.lineTo(xs(p.vol), ys(p.ret)) : ctx.moveTo(xs(p.vol), ys(p.ret)))); ctx.stroke();
+    ctx.restore();
+    // asset corners
+    ctx.font = `11px ${tok('--mono')}`; ctx.textBaseline = 'middle';
+    assets.forEach((a, i) => {
+      const x = xs(a.vol), y = ys(a.ret);
+      ctx.fillStyle = tok('--ink'); ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = tok('--muted'); ctx.textAlign = x > box.r - 80 ? 'right' : 'left';
+      ctx.fillText(PF_SHORT[i], x + (ctx.textAlign === 'right' ? -7 : 7), y);
+    });
+    // min var
+    ctx.strokeStyle = tok('--ink'); ctx.lineWidth = 2; ctx.fillStyle = tok('--card');
+    ctx.beginPath(); ctx.arc(xs(F.minv.vol), ys(F.minv.ret), 5.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    // tangency
+    ctx.fillStyle = tok('--accent'); ctx.beginPath(); ctx.arc(xs(F.best.vol), ys(F.best.ret), 7, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = tok('--card'); ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = tok('--accent'); ctx.textAlign = 'left'; ctx.font = `500 11px ${tok('--mono')}`;
+    ctx.fillText('Max Sharpe', xs(F.best.vol) + 11, ys(F.best.ret) - 10);
+    ctx.fillStyle = tok('--muted'); ctx.textAlign = 'right';
+    ctx.fillText('Min variance', xs(F.minv.vol) - 11, ys(F.minv.ret) - 2);
+    cv.setAttribute('aria-label', `Efficient frontier. Max-Sharpe portfolio: ${pct(F.best.ret, 2)} return, ${pct(F.best.vol, 2)} volatility, Sharpe ${F.best.sharpe.toFixed(2)}.`);
+    const top = F.best.w.map((wi, i) => [wi, i]).sort((a, b) => b[0] - a[0]);
+    $('#pf_read').innerHTML = `The tangency portfolio puts <strong>${pct(top[0][0], 0)} in ${PF_NAMES[top[0][1]]}</strong> and ${pct(top[1][0], 0)} in ${PF_NAMES[top[1][1]]}. It earns ${pct(F.best.ret, 2)} at ${pct(F.best.vol, 2)} volatility, a Sharpe ratio of ${F.best.sharpe.toFixed(2)} over the ${pct(rf, 2)} risk-free rate. ${c > 0.5 ? 'With stocks and bonds this correlated, bonds diversify less, so the frontier flattens.' : c < 0 ? 'Negative stock–bond correlation makes bonds a strong hedge, which pulls the minimum-variance point well to the left.' : 'Try raising the stock–bond correlation to see how much of the diversification benefit disappears.'}`;
+  };
+  const pfRunD = debounce(pfRun, 30);
+  [0, 1, 2, 3].forEach((i) => { pf['r' + i] = bindRange('pf_r' + i, (v) => v.toFixed(2) + '%', pfRunD); });
+  pf.c = bindRange('pf_c', (v) => v.toFixed(2), pfRunD);
+  pf.rf = bindRange('pf_rf', (v) => v.toFixed(2) + '%', pfRunD);
+
+  /* ---------------- Tabs ---------------- */
+  const tabs = $$('.tab');
+  const runners = { retire: rsRun, rmd: rmdRun, bs: bsRun, pf: pfRun };
+  const rendered = {};
+  function selectTab(tab, focus) {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      $('#' + t.getAttribute('aria-controls')).hidden = !on;
+    });
+    const key = tab.id.replace('tab-', '');
+    runners[key]();
+    rendered[key] = true;
+    if (focus) tab.focus();
+    const list = tab.parentElement;
+    if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: Math.max(0, tab.offsetLeft - 8), behavior: reduceMQ.matches ? 'auto' : 'smooth' });
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', (e) => {
+      let j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') j = 0;
+      if (e.key === 'End') j = tabs.length - 1;
+      if (j != null) { e.preventDefault(); selectTab(tabs[j], true); }
+    });
+  });
+  $$('[data-open-tab]').forEach((a) => a.addEventListener('click', () => selectTab($('#tab-' + a.dataset.openTab))));
+
+  /* ---------------- Redraw on resize / theme ---------------- */
+  function redrawAll() {
+    if (heroRes && heroDone) drawFan(heroCv, heroRes, { compact: true });
+    const cur = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
+    if (cur) runners[cur.id.replace('tab-', '')]();
+  }
+  let lastW = window.innerWidth;
+  window.addEventListener('resize', debounce(() => { if (window.innerWidth !== lastW) { lastW = window.innerWidth; redrawAll(); } }, 120));
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+
+  /* ---------------- Theme toggle ---------------- */
+  $('#themeBtn').addEventListener('click', () => {
+    const root = document.documentElement;
+    const cur = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('dr-theme', next); } catch (e) {}
+    redrawAll();
+  });
+
+  /* ---------------- Nav: menu, progress, active section ---------------- */
+  const nav = $('#nav'), menuBtn = $('#menuBtn'), links = $('#navLinks'), bar = $('#progress');
+  const setMenu = (open) => { links.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  menuBtn.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  $$('a', links).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+  let ticking = false;
+  const onScroll = () => {
+    const d = document.documentElement, max = d.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    nav.classList.toggle('scrolled', scrollY > 8);
     ticking = false;
   };
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-  update();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  setupScrollProgress();
-  setupRevealOnScroll();
-  setupParallaxScroll();
-});
-
-// ================================================================
-// PROJECT 1: BLACK-SCHOLES OPTIONS PRICER
-// ================================================================
-function buildOptionsModal() {
-  return `<div class="modal-header"><div><div class="modal-title">Black-Scholes Options Pricer</div><div class="modal-sub">QUANTITATIVE FINANCE · DERIVATIVES VALUATION</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
-  <div class="modal-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">Compute theoretical option prices and all Greeks using the Black-Scholes closed-form solution. Adjust inputs to see how price and sensitivity metrics change in real time.</p>
-    <div class="form-grid">
-      <div class="form-group"><label>Spot Price (S)</label><input id="bs_S" type="number" value="100" step="1"/></div>
-      <div class="form-group"><label>Strike Price (K)</label><input id="bs_K" type="number" value="105" step="1"/></div>
-      <div class="form-group"><label>Time to Expiry (years)</label><input id="bs_T" type="number" value="0.5" step="0.05"/></div>
-      <div class="form-group"><label>Risk-Free Rate (%)</label><input id="bs_r" type="number" value="5" step="0.1"/></div>
-      <div class="form-group"><label>Volatility σ (%)</label><input id="bs_v" type="number" value="25" step="0.5"/></div>
-      <div class="form-group"><label>Option Type</label><select id="bs_type"><option value="call">Call</option><option value="put">Put</option></select></div>
-    </div>
-    <button class="run-btn" onclick="runBS()">▶ Calculate Price & Greeks</button>
-    <div class="results-panel" id="bs_results">
-      <div class="results-grid" id="bs_grid"></div>
-      <div class="chart-container"><canvas id="bs_chart"></canvas></div>
-      <div class="explanation" id="bs_explain"></div>
-    </div>
-  </div>`;
-}
-
-function normalCDF(x) {
-  const t = 1/(1+0.2316419*Math.abs(x));
-  const p = t*(0.319381530+t*(-0.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));
-  const v = 1-(1/Math.sqrt(2*Math.PI))*Math.exp(-0.5*x*x)*p;
-  return x>=0?v:1-v;
-}
-function normalPDF(x) { return Math.exp(-0.5*x*x)/Math.sqrt(2*Math.PI); }
-
-function blackScholes(S,K,T,r,sigma,type) {
-  const d1=(Math.log(S/K)+(r+0.5*sigma*sigma)*T)/(sigma*Math.sqrt(T));
-  const d2=d1-sigma*Math.sqrt(T);
-  let price,delta;
-  if(type==='call'){price=S*normalCDF(d1)-K*Math.exp(-r*T)*normalCDF(d2);delta=normalCDF(d1);}
-  else{price=K*Math.exp(-r*T)*normalCDF(-d2)-S*normalCDF(-d1);delta=normalCDF(d1)-1;}
-  const gamma=normalPDF(d1)/(S*sigma*Math.sqrt(T));
-  const vega=S*normalPDF(d1)*Math.sqrt(T)/100;
-  const theta=(-(S*normalPDF(d1)*sigma)/(2*Math.sqrt(T))-(type==='call'?1:-1)*r*K*Math.exp(-r*T)*normalCDF(type==='call'?d2:-d2))/365;
-  const rho=(type==='call'?1:-1)*K*T*Math.exp(-r*T)*normalCDF(type==='call'?d2:-d2)/100;
-  return{price,delta,gamma,vega,theta,rho,d1,d2};
-}
-
-function runBS() {
-  const S=+document.getElementById('bs_S').value,K=+document.getElementById('bs_K').value;
-  const T=+document.getElementById('bs_T').value,r=+document.getElementById('bs_r').value/100;
-  const sigma=+document.getElementById('bs_v').value/100,type=document.getElementById('bs_type').value;
-  const res=blackScholes(S,K,T,r,sigma,type);
-  document.getElementById('bs_results').classList.add('visible');
-  const itm=type==='call'?S>K:S<K;
-  document.getElementById('bs_grid').innerHTML=`
-    <div class="result-card"><div class="result-label">Option Price</div><div class="result-value">$${res.price.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Delta (Δ)</div><div class="result-value">${res.delta.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Gamma (Γ)</div><div class="result-value">${res.gamma.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Vega (ν) per 1%</div><div class="result-value">${res.vega.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Theta (Θ) per day</div><div class="result-value red">$${res.theta.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Rho (ρ) per 1%</div><div class="result-value">${res.rho.toFixed(4)}</div></div>
-    <div class="result-card"><div class="result-label">Moneyness</div><div class="result-value ${itm?'green':'red'}">${itm?'IN THE MONEY':'OUT OF MONEY'}</div></div>
-    <div class="result-card"><div class="result-label">Intrinsic Value</div><div class="result-value">$${Math.max(0,type==='call'?S-K:K-S).toFixed(2)}</div></div>
-  `;
-  const spots=[],calls=[],puts=[];
-  for(let s=S*0.6;s<=S*1.4;s+=S*0.02){
-    spots.push(s.toFixed(0));
-    calls.push(+blackScholes(s,K,T,r,sigma,'call').price.toFixed(3));
-    puts.push(+blackScholes(s,K,T,r,sigma,'put').price.toFixed(3));
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+  const navMap = new Map($$('a', links).map((a) => [a.getAttribute('href').slice(1), a]));
+  const map = { now: 'work', builds: 'experience' };
+  if ('IntersectionObserver' in window) {
+    const secObs = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const id = map[en.target.id] || en.target.id;
+        navMap.forEach((a, k) => a.setAttribute('aria-current', String(k === id)));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $$('main > section[id]').forEach((s) => secObs.observe(s));
   }
-  const ex=Chart.getChart('bs_chart');if(ex)ex.destroy();
-  new Chart(document.getElementById('bs_chart'),{type:'line',data:{labels:spots,datasets:[
-    {label:'Call Price',data:calls,borderColor:'#3dd68c',borderWidth:2,pointRadius:0,tension:0.4},
-    {label:'Put Price',data:puts,borderColor:'#f05a5a',borderWidth:2,pointRadius:0,tension:0.4}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b87a8',font:{family:'DM Mono',size:11}}}},scales:{x:{ticks:{color:'#3a5070',font:{family:'DM Mono',size:9},maxTicksLimit:8},grid:{color:'rgba(30,45,69,0.5)'}},y:{ticks:{color:'#3a5070',font:{family:'DM Mono',size:10}},grid:{color:'rgba(30,45,69,0.5)'}}}}});
-  document.getElementById('bs_explain').innerHTML=`<strong>Reading the chart:</strong> Option price vs spot price across ±40% of current spot ($${S}). Your ${type} at K=$${K} is worth <strong>$${res.price.toFixed(4)}</strong>. Delta=${res.delta.toFixed(3)} means a $1 spot move changes option value by $${res.delta.toFixed(3)}. Theta=$${res.theta.toFixed(4)}/day represents time decay cost. ${itm?'The option is in-the-money with intrinsic value $'+Math.max(0,type==='call'?S-K:K-S).toFixed(2)+'.':'The option is currently out-of-the-money (all time value).'}`;
-}
 
-// ================================================================
-// PROJECT 2: PORTFOLIO OPTIMIZER
-// ================================================================
-function buildPortfolioModal() {
-  const rows=[['SPY','9.5','15.2'],['BND','3.2','4.1'],['GLD','5.8','16.0'],['QQQ','12.0','20.5'],['VNQ','7.1','18.3']];
-  return `<div class="modal-header"><div><div class="modal-title">Portfolio Optimizer</div><div class="modal-sub">MODERN PORTFOLIO THEORY · EFFICIENT FRONTIER</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
-  <div class="modal-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">Configure 5 assets with expected annual return and volatility. The optimizer runs 3,000 Monte Carlo weight simulations, plots the efficient frontier, and finds the maximum Sharpe ratio portfolio.</p>
-    ${rows.map((r,i)=>`<div class="form-grid" style="margin-bottom:0.5rem;">
-      <div class="form-group"><label>Asset ${i+1} Ticker</label><input id="pf_t${i+1}" type="text" value="${r[0]}"/></div>
-      <div class="form-group"><label>Expected Return (%)</label><input id="pf_r${i+1}" type="number" value="${r[1]}" step="0.1"/></div>
-      <div class="form-group"><label>Volatility (%)</label><input id="pf_v${i+1}" type="number" value="${r[2]}" step="0.1"/></div>
-    </div>`).join('')}
-    <div class="form-group" style="max-width:220px;margin-bottom:1.5rem;"><label>Risk-Free Rate (%)</label><input id="pf_rfr" type="number" value="5.0" step="0.1"/></div>
-    <button class="run-btn" onclick="runPortfolio()">▶ Optimize Portfolio</button>
-    <div class="results-panel" id="pf_results">
-      <div class="results-grid" id="pf_grid"></div>
-      <div class="chart-container" style="height:320px;"><canvas id="pf_chart"></canvas></div>
-      <div class="explanation" id="pf_explain"></div>
-    </div>
-  </div>`;
-}
-
-function runPortfolio() {
-  const rfr=+document.getElementById('pf_rfr').value/100;
-  const assets=[];
-  for(let i=1;i<=5;i++) assets.push({ticker:document.getElementById(`pf_t${i}`).value.toUpperCase(),ret:+document.getElementById(`pf_r${i}`).value/100,vol:+document.getElementById(`pf_v${i}`).value/100});
-  const sims=3000; const portfolios=[];
-  let maxS=-Infinity,maxSP=null,minV=Infinity,minVP=null;
-  for(let s=0;s<sims;s++){
-    let w=assets.map(()=>Math.random());
-    const t=w.reduce((a,b)=>a+b,0);w=w.map(x=>x/t);
-    const ret=w.reduce((acc,wi,i)=>acc+wi*assets[i].ret,0);
-    const vol=Math.sqrt(w.reduce((acc,wi,i)=>acc+wi*wi*assets[i].vol*assets[i].vol,0));
-    const sharpe=(ret-rfr)/vol;
-    portfolios.push({w,ret,vol,sharpe});
-    if(sharpe>maxS){maxS=sharpe;maxSP=portfolios[portfolios.length-1];}
-    if(vol<minV){minV=vol;minVP=portfolios[portfolios.length-1];}
+  /* ---------------- Reveal ---------------- */
+  const rv = $$('.rv');
+  const showAll = () => rv.forEach((el) => el.classList.add('in'));
+  if (!('IntersectionObserver' in window) || reduceMQ.matches) showAll();
+  else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
+    rv.forEach((el, i) => { el.style.transitionDelay = el.closest('.hero') ? (i * 90) + 'ms' : '0ms'; io.observe(el); });
   }
-  document.getElementById('pf_results').classList.add('visible');
-  document.getElementById('pf_grid').innerHTML=`
-    <div class="result-card"><div class="result-label">Max Sharpe Ratio</div><div class="result-value green">${maxSP.sharpe.toFixed(3)}</div></div>
-    <div class="result-card"><div class="result-label">Expected Return</div><div class="result-value">${(maxSP.ret*100).toFixed(2)}%</div></div>
-    <div class="result-card"><div class="result-label">Portfolio Volatility</div><div class="result-value">${(maxSP.vol*100).toFixed(2)}%</div></div>
-    <div class="result-card"><div class="result-label">Min Vol Portfolio</div><div class="result-value blue">${(minVP.vol*100).toFixed(2)}%</div></div>
-    ${assets.map((a,i)=>`<div class="result-card"><div class="result-label">${a.ticker} Weight</div><div class="result-value">${(maxSP.w[i]*100).toFixed(1)}%</div></div>`).join('')}
-  `;
-  const ex=Chart.getChart('pf_chart');if(ex)ex.destroy();
-  new Chart(document.getElementById('pf_chart'),{type:'scatter',data:{datasets:[
-    {label:'Simulated Portfolios',data:portfolios.slice(0,800).map(p=>({x:+(p.vol*100).toFixed(2),y:+(p.ret*100).toFixed(2)})),
-     pointBackgroundColor:portfolios.slice(0,800).map(p=>{const t=Math.max(0,Math.min(1,(p.sharpe+0.5)/(maxS+0.5)));return`rgba(${Math.round(74+127*t)},${Math.round(158*t+50*(1-t))},${Math.round(255*(1-t)+76*t)},0.5)`;}),pointRadius:2,showLine:false},
-    {label:'Max Sharpe ★',data:[{x:+(maxSP.vol*100).toFixed(2),y:+(maxSP.ret*100).toFixed(2)}],pointBackgroundColor:'#c9a84c',pointRadius:10,showLine:false},
-    {label:'Min Volatility ●',data:[{x:+(minVP.vol*100).toFixed(2),y:+(minVP.ret*100).toFixed(2)}],pointBackgroundColor:'#4a9eff',pointRadius:10,showLine:false}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b87a8',font:{family:'DM Mono',size:11},boxWidth:10}}},scales:{x:{title:{display:true,text:'Volatility (%)',color:'#6b87a8',font:{family:'DM Mono',size:10}},ticks:{color:'#3a5070',font:{family:'DM Mono',size:9}},grid:{color:'rgba(30,45,69,0.5)'}},y:{title:{display:true,text:'Expected Return (%)',color:'#6b87a8',font:{family:'DM Mono',size:10}},ticks:{color:'#3a5070',font:{family:'DM Mono',size:9}},grid:{color:'rgba(30,45,69,0.5)'}}}}});
-  document.getElementById('pf_explain').innerHTML=`<strong>Optimal Allocation (Sharpe = ${maxSP.sharpe.toFixed(3)}):</strong> ${assets.map((a,i)=>`${a.ticker}: ${(maxSP.w[i]*100).toFixed(1)}%`).join(' · ')}<br/><br/>Each dot represents one of 3,000 random weight combinations. The color gradient represents Sharpe ratio (blue=low, gold=high). The gold star marks the tangency portfolio — maximum return per unit of risk. The blue dot is minimum variance. The upper-left envelope of dots traces the efficient frontier.`;
-}
+  addEventListener('beforeprint', showAll);
 
-// ================================================================
-// PROJECT 3: RMD COMPLIANCE ENGINE
-// ================================================================
-const IRS_TABLE={72:27.4,73:26.5,74:25.5,75:24.6,76:23.7,77:22.9,78:22.0,79:21.1,80:20.2,81:19.4,82:18.5,83:17.7,84:16.8,85:16.0,86:15.2,87:14.4,88:13.7,89:12.9,90:12.2,91:11.5,92:10.8,93:10.1,94:9.5,95:8.9,96:8.4,97:7.8,98:7.3,99:6.8,100:6.4};
-
-function buildRMDModal() {
-  return `<div class="modal-header"><div><div class="modal-title">RMD Compliance Engine</div><div class="modal-sub">RETIREMENT ANALYTICS · IRS §401(a)(9) · SECURE 2.0</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
-  <div class="modal-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">Replicates the IRS Required Minimum Distribution logic used at Ameriprise Financial. Checks compliance status, calculates required distributions using the 2022 Uniform Lifetime Table, and projects a 10-year withdrawal schedule.</p>
-    <div class="form-grid">
-      <div class="form-group"><label>Account Holder Name</label><input id="rmd_name" type="text" value="John Smith"/></div>
-      <div class="form-group"><label>Birth Year</label><input id="rmd_dob" type="number" value="1952" min="1920" max="1965"/></div>
-      <div class="form-group"><label>Account Balance ($)</label><input id="rmd_bal" type="number" value="450000" step="1000"/></div>
-      <div class="form-group"><label>Distributed YTD ($)</label><input id="rmd_dist" type="number" value="0" step="100"/></div>
-      <div class="form-group"><label>Account Type</label><select id="rmd_acct"><option>Traditional IRA</option><option>401(k)</option><option>403(b)</option><option>SIMPLE IRA</option></select></div>
-      <div class="form-group"><label>Growth Assumption (%)</label><input id="rmd_growth" type="number" value="5" step="0.5"/></div>
-    </div>
-    <button class="run-btn" onclick="runRMD()">▶ Check Compliance</button>
-    <div class="results-panel" id="rmd_results">
-      <div id="rmd_status_row" style="margin-bottom:1.5rem;"></div>
-      <div class="results-grid" id="rmd_grid"></div>
-      <div class="chart-container" style="height:260px;"><canvas id="rmd_chart"></canvas></div>
-      <div class="explanation" id="rmd_explain"></div>
-    </div>
-  </div>`;
-}
-
-function runRMD() {
-  const name=document.getElementById('rmd_name').value;
-  const dob=+document.getElementById('rmd_dob').value;
-  const bal=+document.getElementById('rmd_bal').value;
-  const dist=+document.getElementById('rmd_dist').value;
-  const acct=document.getElementById('rmd_acct').value;
-  const growth=+document.getElementById('rmd_growth').value/100;
-  const yr=2026,age=yr-dob;
-  const rmdReq=age>=73;
-  const dp=IRS_TABLE[Math.min(Math.max(age,72),100)]||6.4;
-  const reqRMD=rmdReq?bal/dp:0;
-  const remaining=Math.max(0,reqRMD-dist);
-  const penalty=remaining*0.25;
-  const ok=!rmdReq||dist>=reqRMD;
-  document.getElementById('rmd_results').classList.add('visible');
-  document.getElementById('rmd_status_row').innerHTML=`<span class="status-badge ${ok?'ok':'warn'}">${ok?'✓ COMPLIANT':'⚠ NON-COMPLIANT'}</span>&nbsp;&nbsp;<span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--text-muted);">${name} · Age ${age} · ${acct}</span>`;
-  document.getElementById('rmd_grid').innerHTML=`
-    <div class="result-card"><div class="result-label">Account Balance</div><div class="result-value">$${bal.toLocaleString()}</div></div>
-    <div class="result-card"><div class="result-label">Age / RMD Status</div><div class="result-value ${age>=73?'red':'green'}">${age} · ${age>=73?'REQUIRED':'NOT YET'}</div></div>
-    <div class="result-card"><div class="result-label">Distribution Period</div><div class="result-value">${rmdReq?dp+' yrs':'N/A'}</div></div>
-    <div class="result-card"><div class="result-label">Required RMD</div><div class="result-value ${rmdReq?'red':''}">$${reqRMD.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Distributed YTD</div><div class="result-value green">$${dist.toLocaleString()}</div></div>
-    <div class="result-card"><div class="result-label">Still Required</div><div class="result-value ${remaining>0?'red':'green'}">$${remaining.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Penalty Exposure (25%)</div><div class="result-value red">$${penalty.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Deadline</div><div class="result-value">Dec 31, ${yr}</div></div>
-  `;
-  const yrs=[],rmds=[],bals=[];let b=bal;
-  for(let i=0;i<10;i++){const a=age+i;const d2=IRS_TABLE[Math.min(Math.max(a,72),100)]||6.4;const rmd=a>=73?b/d2:0;yrs.push(yr+i);rmds.push(+rmd.toFixed(0));bals.push(+b.toFixed(0));b=Math.max(0,b-rmd)*(1+growth);}
-  const ex=Chart.getChart('rmd_chart');if(ex)ex.destroy();
-  new Chart(document.getElementById('rmd_chart'),{type:'bar',data:{labels:yrs,datasets:[
-    {label:'Required RMD',data:rmds,backgroundColor:'rgba(240,90,90,0.6)',borderColor:'#f05a5a',borderWidth:1},
-    {label:'Balance ÷ 10',data:bals.map(b=>b/10),backgroundColor:'rgba(74,158,255,0.15)',borderColor:'#4a9eff',borderWidth:1,type:'line',tension:0.4}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b87a8',font:{family:'DM Mono',size:11}}}},scales:{x:{ticks:{color:'#3a5070',font:{family:'DM Mono',size:9}},grid:{color:'rgba(30,45,69,0.5)'}},y:{ticks:{color:'#3a5070',font:{family:'DM Mono',size:9},callback:v=>'$'+(v/1000).toFixed(0)+'K'},grid:{color:'rgba(30,45,69,0.5)'}}}}});
-  document.getElementById('rmd_explain').innerHTML=`<strong>IRS §401(a)(9) / SECURE 2.0 Logic:</strong> RMDs begin at age 73. The distribution period comes from the IRS Uniform Lifetime Table (2022). ${name} at age ${age}: ${rmdReq?`Required RMD = $${bal.toLocaleString()} ÷ ${dp} years = <strong>$${reqRMD.toLocaleString(undefined,{maximumFractionDigits:0})}</strong>. ${ok?'Current YTD distributions satisfy this requirement.':'<span style="color:var(--red)">⚠ Distribution shortfall of $'+remaining.toLocaleString(undefined,{maximumFractionDigits:0})+' triggers a 25% excise tax of $'+penalty.toLocaleString(undefined,{maximumFractionDigits:0})+'.</span>'}`:'No RMD required yet — first RMD kicks in at age 73.'} Chart shows projected 10-year schedule assuming ${(growth*100).toFixed(1)}% annual growth after distributions.`;
-}
-
-// ================================================================
-// PROJECT 4: IDLE CASH YIELD OPTIMIZER
-// ================================================================
-function buildCashModal() {
-  return `<div class="modal-header"><div><div class="modal-title">Idle Cash Yield Optimizer</div><div class="modal-sub">CASH DRAG ANALYSIS · REALLOCATION MODELING</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
-  <div class="modal-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">Quantify cash drag and model reallocation scenarios. Recreates the analytics dashboard that achieved ~20% higher yields across 80%+ of 100+ managed accounts at Ameriprise Financial.</p>
-    <div class="form-grid">
-      <div class="form-group"><label>Portfolio Value ($)</label><input id="ic_total" type="number" value="500000" step="5000"/></div>
-      <div class="form-group"><label>Idle Cash ($)</label><input id="ic_cash" type="number" value="75000" step="500"/></div>
-      <div class="form-group"><label>Current Cash Yield (%)</label><input id="ic_cur" type="number" value="0.5" step="0.1"/></div>
-    </div>
-    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">Reallocation Alternatives</p>
-    <div class="form-grid">
-      <div class="form-group"><label>Money Market Fund (%)</label><input id="ic_mm" type="number" value="5.1" step="0.1"/></div>
-      <div class="form-group"><label>T-Bills / SGOV (%)</label><input id="ic_tb" type="number" value="5.3" step="0.1"/></div>
-      <div class="form-group"><label>Short-Term Bond ETF (%)</label><input id="ic_bond" type="number" value="4.8" step="0.1"/></div>
-      <div class="form-group"><label>Dividend ETF (%)</label><input id="ic_div" type="number" value="6.2" step="0.1"/></div>
-    </div>
-    <button class="run-btn" onclick="runCash()">▶ Analyze Cash Drag</button>
-    <div class="results-panel" id="ic_results">
-      <div class="results-grid" id="ic_grid"></div>
-      <div class="chart-container" style="height:260px;"><canvas id="ic_chart"></canvas></div>
-      <div class="explanation" id="ic_explain"></div>
-    </div>
-  </div>`;
-}
-
-function runCash() {
-  const total=+document.getElementById('ic_total').value,cash=+document.getElementById('ic_cash').value;
-  const cur=+document.getElementById('ic_cur').value/100;
-  const opts=[
-    {name:'Money Market',rate:+document.getElementById('ic_mm').value/100},
-    {name:'T-Bills/SGOV',rate:+document.getElementById('ic_tb').value/100},
-    {name:'Short Bond ETF',rate:+document.getElementById('ic_bond').value/100},
-    {name:'Dividend ETF',rate:+document.getElementById('ic_div').value/100}
-  ];
-  const curInc=cash*cur,best=opts.reduce((a,b)=>a.rate>b.rate?a:b);
-  const bestInc=cash*best.rate,gain=bestInc-curInc;
-  const cashPct=(cash/total*100).toFixed(1);
-  const dragBps=((best.rate-cur)*cash/total*10000).toFixed(0);
-  document.getElementById('ic_results').classList.add('visible');
-  document.getElementById('ic_grid').innerHTML=`
-    <div class="result-card"><div class="result-label">Idle Cash</div><div class="result-value">$${cash.toLocaleString()}</div></div>
-    <div class="result-card"><div class="result-label">Cash % of Portfolio</div><div class="result-value ${+cashPct>10?'red':'green'}">${cashPct}%</div></div>
-    <div class="result-card"><div class="result-label">Current Annual Income</div><div class="result-value red">$${curInc.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Best Option Income</div><div class="result-value green">$${bestInc.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Annual Opportunity Gain</div><div class="result-value green">+$${gain.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="result-card"><div class="result-label">Cash Drag (basis pts)</div><div class="result-value red">${dragBps} bps</div></div>
-    <div class="result-card"><div class="result-label">Best Reallocation</div><div class="result-value blue">${best.name}</div></div>
-    <div class="result-card"><div class="result-label">Yield Improvement</div><div class="result-value green">+${((best.rate-cur)*100).toFixed(2)}%</div></div>
-  `;
-  const ex=Chart.getChart('ic_chart');if(ex)ex.destroy();
-  new Chart(document.getElementById('ic_chart'),{type:'bar',data:{labels:['Current Cash',...opts.map(o=>o.name)],datasets:[{label:'Annual Income ($)',data:[curInc,...opts.map(o=>cash*o.rate)],backgroundColor:['rgba(240,90,90,0.5)',...opts.map(o=>o.name===best.name?'rgba(61,214,140,0.6)':'rgba(201,168,76,0.3)')],borderColor:['#f05a5a',...opts.map(o=>o.name===best.name?'#3dd68c':'#7a6430')],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#6b87a8',font:{family:'DM Mono',size:10}},grid:{color:'rgba(30,45,69,0.5)'}},y:{ticks:{color:'#3a5070',font:{family:'DM Mono',size:9},callback:v=>'$'+v.toLocaleString()},grid:{color:'rgba(30,45,69,0.5)'}}}}});
-  document.getElementById('ic_explain').innerHTML=`<strong>Cash Drag Analysis:</strong> $${cash.toLocaleString()} (${cashPct}% of AUM) earning ${(cur*100).toFixed(1)}% generates only $${curInc.toLocaleString(undefined,{maximumFractionDigits:0})}/year. Reallocating to <strong>${best.name}</strong> at ${(best.rate*100).toFixed(1)}% yields $${bestInc.toLocaleString(undefined,{maximumFractionDigits:0})} — an improvement of <strong>$${gain.toLocaleString(undefined,{maximumFractionDigits:0})}/year</strong> and ${dragBps} basis points of recovered drag. Scaled across a 100+ account book of business, this compounds substantially — the exact impact quantified in the Ameriprise idle-cash dashboard.`;
-}
-
-// ================================================================
-// PROJECT 5: EARNINGS CALL SENTIMENT ANALYZER
-// ================================================================
-const NLP_DICT={
-  bullish:['record','strong','growth','exceed','surpass','confident','robust','exceptional','momentum','accelerat','beat','outperform','highest','best','revenue','expand','opportunity','pipeline','strategic','positive','gain','profit','optimis','milestone','deliver'],
-  bearish:['decline','miss','weak','headwind','challenge','concern','disappoint','loss','risk','slowdown','recession','uncertain','pressure','difficult','fell','decrease','negative','impact'],
-  uncertain:['cautious','may','might','could','potential','possible','if','depending','variable','monitor','vigilant','volatil'],
-  forward:['will','expect','anticipate','forecast','guidance','outlook','target','plan','intend','project','going forward','upcoming','2026'],
-  risk:['risk','threat','exposure','liability','downside','adverse','unfavorable','deficit','impair','headwind']
-};
-
-function buildNLPModal() {
-  const sample=`Good morning, everyone. We delivered another record quarter with revenue of $4.2 billion, surpassing analyst expectations. Our core business continues to show strong momentum and we remain confident in our full-year guidance. That said, we acknowledge some headwinds from macroeconomic uncertainty and rising input costs. We are proactively managing risks in our supply chain. Our cash position is robust at $1.8 billion, giving us significant flexibility to pursue strategic acquisitions. We are cautiously optimistic about the second half, though we remain vigilant about potential recessionary pressures. Customer retention remains exceptional and our pipeline has never been stronger. We will continue to invest in growth and expect to exceed prior year targets.`;
-  return `<div class="modal-header"><div><div class="modal-title">Earnings Call Sentiment Analyzer</div><div class="modal-sub">NLP · FINANCIAL TEXT MINING · SIGNAL DETECTION</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
-  <div class="modal-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;">Paste an earnings call transcript. The analyzer applies a financial-domain NLP lexicon to score sentiment, detect bullish/bearish signals, uncertainty language, and forward-looking statements — directly from Text Mining coursework methodology.</p>
-    <div class="form-group" style="margin-bottom:1.2rem;"><label>Transcript Text</label><textarea id="nlp_text" rows="7" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:1rem;font-family:'DM Mono',monospace;font-size:0.8rem;line-height:1.7;outline:none;resize:vertical;">${sample}</textarea></div>
-    <div class="form-grid">
-      <div class="form-group"><label>Company Name</label><input id="nlp_co" type="text" value="ACME Corp"/></div>
-      <div class="form-group"><label>Period</label><input id="nlp_q" type="text" value="Q4 2025"/></div>
-    </div>
-    <button class="run-btn" onclick="runNLP()">▶ Analyze Sentiment</button>
-    <div class="results-panel" id="nlp_results">
-      <div id="nlp_status_row" style="margin-bottom:1.5rem;"></div>
-      <div class="results-grid" id="nlp_grid"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;">
-        <div><div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-faint);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Signal Distribution</div><div class="chart-container" style="height:220px;"><canvas id="nlp_chart"></canvas></div></div>
-        <div id="nlp_tokens"></div>
-      </div>
-      <div class="explanation" id="nlp_explain"></div>
-    </div>
-  </div>`;
-}
-
-function runNLP() {
-  const text=document.getElementById('nlp_text').value.toLowerCase();
-  const co=document.getElementById('nlp_co').value,q=document.getElementById('nlp_q').value;
-  const counts={},found={};
-  Object.keys(NLP_DICT).forEach(cat=>{
-    counts[cat]=0;found[cat]=[];
-    NLP_DICT[cat].forEach(w=>{const m=text.match(new RegExp(w,'gi'));if(m){counts[cat]+=m.length;found[cat].push(w);}});
-  });
-  const total=Object.values(counts).reduce((a,b)=>a+b,0);
-  const score=total===0?0:((counts.bullish*2+counts.forward-counts.bearish*2-counts.risk*1.5-counts.uncertain*0.5)/total)*100;
-  const label=score>20?'BULLISH':score>0?'MILDLY BULLISH':score>-20?'NEUTRAL / MIXED':'BEARISH';
-  const cls=score>20?'ok':score<-20?'warn':'';
-  const wc=text.split(/\s+/).length;
-  document.getElementById('nlp_results').classList.add('visible');
-  document.getElementById('nlp_status_row').innerHTML=`<span class="status-badge ${cls}" style="${cls===''?'background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold)':''}">${label}</span>&nbsp;&nbsp;<span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--text-muted);">${co} · ${q} · Score: ${score.toFixed(1)}</span>`;
-  document.getElementById('nlp_grid').innerHTML=`
-    <div class="result-card"><div class="result-label">Sentiment Score</div><div class="result-value ${score>0?'green':'red'}">${score.toFixed(1)}</div></div>
-    <div class="result-card"><div class="result-label">Bullish Signals</div><div class="result-value green">${counts.bullish}</div></div>
-    <div class="result-card"><div class="result-label">Bearish Signals</div><div class="result-value red">${counts.bearish}</div></div>
-    <div class="result-card"><div class="result-label">Uncertainty Flags</div><div class="result-value">${counts.uncertain}</div></div>
-    <div class="result-card"><div class="result-label">Forward-Looking</div><div class="result-value blue">${counts.forward}</div></div>
-    <div class="result-card"><div class="result-label">Risk Mentions</div><div class="result-value red">${counts.risk}</div></div>
-    <div class="result-card"><div class="result-label">Word Count</div><div class="result-value">${wc}</div></div>
-    <div class="result-card"><div class="result-label">Signal Density</div><div class="result-value">${(total/wc*100).toFixed(1)}%</div></div>
-  `;
-  const ex=Chart.getChart('nlp_chart');if(ex)ex.destroy();
-  new Chart(document.getElementById('nlp_chart'),{type:'doughnut',data:{labels:['Bullish','Forward-Looking','Bearish','Uncertain','Risk'],datasets:[{data:[counts.bullish,counts.forward,counts.bearish,counts.uncertain,counts.risk],backgroundColor:['rgba(61,214,140,0.7)','rgba(74,158,255,0.7)','rgba(240,90,90,0.7)','rgba(201,168,76,0.5)','rgba(240,90,90,0.3)'],borderColor:['#3dd68c','#4a9eff','#f05a5a','#c9a84c','#a04040'],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#6b87a8',font:{family:'DM Mono',size:10},boxWidth:10},position:'right'}}}});
-  const colors={bullish:'var(--green)',bearish:'var(--red)',uncertain:'var(--gold)',forward:'var(--blue)',risk:'#f09090'};
-  const td=document.getElementById('nlp_tokens');
-  td.innerHTML=`<div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-faint);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Detected Keywords</div>`;
-  Object.keys(NLP_DICT).forEach(cat=>{
-    if(!found[cat].length)return;
-    td.innerHTML+=`<div style="margin-bottom:0.7rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:${colors[cat]};letter-spacing:0.1em;text-transform:uppercase;">${cat}: </span><br/>${[...new Set(found[cat])].slice(0,7).map(w=>`<span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text-muted);background:rgba(255,255,255,0.04);padding:0.15rem 0.4rem;margin:0.1rem;display:inline-block;">${w}</span>`).join('')}</div>`;
-  });
-  document.getElementById('nlp_explain').innerHTML=`<strong>Scoring Formula:</strong> (Bullish×2 + Forward − Bearish×2 − Risk×1.5 − Uncertain×0.5) ÷ Total Signals × 100. <strong>${co} ${q}</strong> scores <strong>${score.toFixed(1)}</strong> → <strong>${label}</strong>. Detected ${counts.bullish} bullish, ${counts.forward} forward-looking, ${counts.bearish} bearish, and ${counts.risk} risk signals across ${wc} words. This lexicon-based NLP approach mirrors methodologies used in earnings surprise prediction and systematic investment research. The model can be extended with TF-IDF weighting, LLM embeddings, or BERT-based classification for production use.`;
-}
+  /* ---------------- Boot ---------------- */
+  const boot = () => {
+    runHero();
+    selectTab(tabs[0]);
+  };
+  // Wait for fonts so canvas labels use the right face; never block longer than 1.2s.
+  let booted = false;
+  const go = () => { if (!booted) { booted = true; boot(); } };
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); } else go();
+})();
 </script>
 </body>
 </html>
